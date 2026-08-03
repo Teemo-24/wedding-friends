@@ -157,16 +157,16 @@
             </div>
         </section>
 
-        <!-- 3. 사진첩 (갤러리) -->
+       <!-- 3. 사진첩 (갤러리) -->
         <section>
             <h2>GALLERY</h2>
             
             <!-- [상단] 테트리스 영역 -->
             <div class="gallery">
-                <!-- photo1: 메인 큰 사진 (전체 폭) -->
-                <div class="size-4x"><img src="./images/photo1.jpg" onerror="this.src='https://via.placeholder.com/480x480?text=Photo+1'"></div>
+                <!-- 💡 photo1: 메인 큰 사진 (요청하신 4x6 크기로 세로 길이 연장됨) -->
+                <div style="grid-column: span 2; grid-row: span 3;"><img src="./images/photo1.jpg" onerror="this.src='https://via.placeholder.com/480x720?text=Photo+1+(4x6)'"></div>
                 
-                <!-- 💡 photo2, photo3: 정확히 2x4 비율로 좌우 나란히 배치 (세로 2칸만 차지하도록 수정됨) -->
+                <!-- photo2, photo3: 2x4 비율로 좌우 나란히 배치 -->
                 <div style="grid-column: span 1; grid-row: span 2;"><img src="./images/photo2.jpg" onerror="this.src='https://via.placeholder.com/240x360?text=Photo+2+(2x4)'"></div>
                 <div style="grid-column: span 1; grid-row: span 2;"><img src="./images/photo3.jpg" onerror="this.src='https://via.placeholder.com/240x360?text=Photo+3+(2x4)'"></div>
             </div>
