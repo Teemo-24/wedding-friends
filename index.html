@@ -166,8 +166,9 @@
                 <!-- 메인 큰 사진 (가로2 x 세로2) -->
                 <div class="size-4x"><img src="./images/photo1.jpg" onerror="this.src='https://via.placeholder.com/480x480?text=Photo+1+(4x)'"></div>
                 
-                <!-- 기존 photo2와 photo3을 1칸으로 병합한 사진 (photo4와 같은 크기) -->
-                <div><img src="./images/photo2.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Merged+Photo+2'"></div>
+                <!-- 💡 요청하신 photo2, photo3 (각각 가로 2칸 x 세로 4칸의 2x4 크기 배치) -->
+                <div class="size-4x" style="grid-row: span 4;"><img src="./images/photo2.jpg" onerror="this.src='https://via.placeholder.com/480x720?text=Photo+2+(2x4)'"></div>
+                <div class="size-4x" style="grid-row: span 4;"><img src="./images/photo3.jpg" onerror="this.src='https://via.placeholder.com/480x720?text=Photo+3+(2x4)'"></div>
                 
                 <!-- 기존 photo4 (1칸) -->
                 <div><img src="./images/photo4.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+4'"></div>
