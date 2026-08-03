@@ -270,14 +270,21 @@
             setTimeout(typeName, 500);
         });
 
-        // 2. BGM 제어 및 터치 시 자동 재생 기능
+        // 2. BGM 자동 재생
         const bgmAudio = document.getElementById('bgm-audio');
         const bgmToggleBtn = document.getElementById('bgm-toggle');
-        let isPlaying = false; 
+        let isPlaying = true; 
         
-        // 버튼 직접 클릭 시
-        bgmToggleBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // 버튼 터치가 전체 화면 터치로 겹치지 않게 차단
+        let playPromise = bgmAudio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(_ => { isPlaying = true; })
+            .catch(error => {
+                isPlaying = false;
+                bgmToggleBtn.classList.remove('playing');
+                bgmToggleBtn.innerHTML = '<span>🎵</span> BGM 켜기';
+            });
+        }
+        bgmToggleBtn.addEventListener('click', function() {
             if (isPlaying) {
                 bgmAudio.pause();
                 bgmToggleBtn.classList.remove('playing');
