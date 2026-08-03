@@ -8,7 +8,7 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=2 를 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
+    <!-- 💡 URL 뒤에 ?v=3 를 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
     <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=3">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
@@ -16,7 +16,6 @@
         /* 기본 웹 폰트 및 스타일 초기화 */
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
-        /* 👇 여기에 필기체 폰트 추가 */
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         
         body { font-family: 'Pretendard', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; text-align: center; }
@@ -41,21 +40,21 @@
         
         .cover-lettering { 
             position: absolute; 
-            top: 40px; /* 💡 화면 위쪽에서 40px 만큼의 여백을 둡니다. (원하시면 숫자를 조절하세요) */
+            top: 40px; 
             left: 50%; 
-            transform: translateX(-50%); /* 💡 세로 중앙 정렬을 해제하고 가로 중앙 정렬만 유지합니다 */
+            transform: translateX(-50%); 
             color: #fff; 
             width: 100%; 
             text-shadow: 1px 1px 6px rgba(0,0,0,0.4); 
         }
         .cover-lettering .main-names { font-family: 'Playfair Display', serif; font-size: 2.8em; font-style: italic; margin: 0 0 10px 0; font-weight: 400; min-height: 1.2em; }
         .cover-lettering .main-date { 
-            font-family: 'Great Vibes', cursive; /* 부드러운 필기체 적용 */
-            font-size: 1.8em; /* 필기체는 기본 크기가 작아 큼직하게 키움 */
-            letter-spacing: 1px; /* 자간 축소 (필기체는 글자가 이어져야 예쁨) */
+            font-family: 'Great Vibes', cursive; 
+            font-size: 1.8em; 
+            letter-spacing: 1px; 
             margin: 0; 
             font-weight: 400; 
-            text-transform: none; /* 강제 대문자 해제 */
+            text-transform: none; 
             min-height: 1.2em; 
         }
 
@@ -73,7 +72,7 @@
         /* 📸 테트리스(Grid) 갤러리 스타일 */
         .gallery { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; gap: 10px; padding: 0 10px; grid-auto-flow: dense; }
         .gallery div { border-radius: 8px; overflow: hidden; background-color: #eee; }
-        .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; } /* 클릭 가능함을 표시(cursor) */
+        .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; } 
 
         .size-4x { grid-column: span 2; grid-row: span 2; }
         .size-2x-tall { grid-row: span 2; }
@@ -81,12 +80,12 @@
 
         /* 💡 1:1 비율 4장 한 줄 배치 (여백 제거용) */
         .gallery.row-of-4-standalone { 
-            grid-template-columns: repeat(4, 1fr); /* 4칸으로 쪼개기 */
-            grid-auto-rows: auto; /* 고정 높이를 해제하여 빈 여백 삭제 */
-            margin: 10px 0; /* 위아래 갤러리와 똑같이 10px 간격 유지 */
+            grid-template-columns: repeat(4, 1fr); 
+            grid-auto-rows: auto; 
+            margin: 10px 0; 
         }
         .gallery.row-of-4-standalone div {
-            aspect-ratio: 1; /* 사진을 완벽한 1:1 정사각형 비율로 맞춤 */
+            aspect-ratio: 1; 
         }
         
         /* 동영상 영역 */
@@ -113,10 +112,10 @@
 
         /* 🔍 라이트박스(사진 확대) 스타일 */
         .lightbox {
-            display: none; /* 기본은 숨김 */
+            display: none; 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* 검은색 반투명 배경 */
-            z-index: 2000; /* BGM 버튼보다 위에 표시 */
+            background-color: rgba(0, 0, 0, 0.9); 
+            z-index: 2000; 
             align-items: center; justify-content: center;
         }
         .lightbox img {
@@ -170,7 +169,7 @@
                 <div><img src="./images/photo4.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+4'"></div>
             </div>
             
-            <!-- 💡 [중단] 1:1 비율 사진 4개 (여백이 생기지 않도록 독립된 영역으로 묶음) -->
+            <!-- 💡 [중단] 1:1 비율 사진 4개 -->
             <div class="gallery row-of-4-standalone">
                 <div><img src="./images/photo7.jpg" onerror="this.src='https://via.placeholder.com/120?text=P7'"></div>
                 <div><img src="./images/photo8.jpg" onerror="this.src='https://via.placeholder.com/120?text=P8'"></div>
@@ -225,9 +224,9 @@
             © 2026 Yungi & Yeeun
         </footer>
 
-        <!-- BGM 오디오 및 버튼 -->
-        <audio id="bgm-audio" src="./audio/bgm.mp3" loop autoplay></audio>
-        <button id="bgm-toggle" class="bgm-btn playing"><span>⏸️</span> BGM 끄기</button>
+        <!-- 💡 브라우저 오디오 차단 방지를 위해 autoplay 속성 제거 -->
+        <audio id="bgm-audio" src="./audio/bgm.mp3" loop></audio>
+        <button id="bgm-toggle" class="bgm-btn"><span>🎵</span> BGM 켜기</button>
         
         <!-- 💡 사진 확대 보기 (라이트박스) 팝업 영역 -->
         <div id="lightbox" class="lightbox">
@@ -271,13 +270,14 @@
             setTimeout(typeName, 500);
         });
 
-        // 2. BGM 제어 및 스마트폰 자동재생 우회 기능
+        // 2. BGM 제어 및 터치 시 자동 재생 기능
         const bgmAudio = document.getElementById('bgm-audio');
         const bgmToggleBtn = document.getElementById('bgm-toggle');
         let isPlaying = false; 
         
-        // 버튼 클릭 시 재생/정지
-        bgmToggleBtn.addEventListener('click', function() {
+        // 버튼 직접 클릭 시
+        bgmToggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // 버튼 터치가 전체 화면 터치로 겹치지 않게 차단
             if (isPlaying) {
                 bgmAudio.pause();
                 bgmToggleBtn.classList.remove('playing');
@@ -290,7 +290,7 @@
             isPlaying = !isPlaying;
         });
 
-        // 💡 하객이 화면을 터치하거나 스크롤하는 순간 BGM 재생
+        // 화면 터치 시 한 번만 자동 재생 시도
         const startBgmOnInteraction = () => {
             if (!isPlaying) {
                 let playPromise = bgmAudio.play();
@@ -299,20 +299,19 @@
                         isPlaying = true;
                         bgmToggleBtn.classList.add('playing');
                         bgmToggleBtn.innerHTML = '<span>⏸️</span> BGM 끄기';
-                    }).catch(e => { console.log("재생 보류됨"); });
+                    }).catch(error => {
+                        console.log("브라우저 자동 재생 정책에 의해 보류되었습니다.");
+                    });
                 }
             }
-            // 한 번 켜지면 더 이상 이벤트를 발생시키지 않음
+            // 이벤트가 한 번 실행되면 리스너 해제 (중복 실행 방지)
             document.removeEventListener('touchstart', startBgmOnInteraction);
             document.removeEventListener('click', startBgmOnInteraction);
-            document.removeEventListener('scroll', startBgmOnInteraction);
         };
 
-        // 이벤트 리스너 등록
+        // 스크롤 대신 확실한 '터치'나 '클릭' 이벤트에만 반응하도록 설정
         document.addEventListener('touchstart', startBgmOnInteraction, {once: true});
         document.addEventListener('click', startBgmOnInteraction, {once: true});
-        document.addEventListener('scroll', startBgmOnInteraction, {once: true});
-
 
         // 3. 🔍 사진 확대(라이트박스) 및 슬라이드 기능
         const lightbox = document.getElementById('lightbox');
@@ -345,7 +344,6 @@
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
-
 
         // 4. 불펌 및 캡처 방지 (PC 우클릭 및 단축키 차단)
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
