@@ -240,8 +240,7 @@
     </div>
 
     <!-- 기능 제어 자바스크립트 -->
-    <script>
-        // 1. 타이핑 애니메이션
+     // 1. 타이핑 애니메이션
         const nameText = "Yungi & Yeeun";
         const dateText = "We are getting married";
         const nameEl = document.getElementById('type-name');
@@ -271,20 +270,12 @@
             setTimeout(typeName, 500);
         });
 
-        // 2. BGM 자동 재생
+        // 2. BGM 제어 및 스마트폰 자동재생 우회 기능
         const bgmAudio = document.getElementById('bgm-audio');
         const bgmToggleBtn = document.getElementById('bgm-toggle');
-        let isPlaying = true; 
+        let isPlaying = false; 
         
-        let playPromise = bgmAudio.play();
-        if (playPromise !== undefined) {
-            playPromise.then(_ => { isPlaying = true; })
-            .catch(error => {
-                isPlaying = false;
-                bgmToggleBtn.classList.remove('playing');
-                bgmToggleBtn.innerHTML = '<span>🎵</span> BGM 켜기';
-            });
-        }
+        // 버튼 클릭 시 재생/정지
         bgmToggleBtn.addEventListener('click', function() {
             if (isPlaying) {
                 bgmAudio.pause();
@@ -298,25 +289,46 @@
             isPlaying = !isPlaying;
         });
 
+        // 💡 하객이 화면을 터치하거나 스크롤하는 순간 BGM 재생
+        const startBgmOnInteraction = () => {
+            if (!isPlaying) {
+                let playPromise = bgmAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        bgmToggleBtn.classList.add('playing');
+                        bgmToggleBtn.innerHTML = '<span>⏸️</span> BGM 끄기';
+                    }).catch(e => { console.log("재생 보류됨"); });
+                }
+            }
+            // 한 번 켜지면 더 이상 이벤트를 발생시키지 않음
+            document.removeEventListener('touchstart', startBgmOnInteraction);
+            document.removeEventListener('click', startBgmOnInteraction);
+            document.removeEventListener('scroll', startBgmOnInteraction);
+        };
+
+        // 이벤트 리스너 등록
+        document.addEventListener('touchstart', startBgmOnInteraction, {once: true});
+        document.addEventListener('click', startBgmOnInteraction, {once: true});
+        document.addEventListener('scroll', startBgmOnInteraction, {once: true});
+
+
         // 3. 🔍 사진 확대(라이트박스) 및 슬라이드 기능
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
         let currentImgIndex = 0;
 
-        // 갤러리 이미지 클릭 시 팝업 열기
         galleryImages.forEach((img, index) => {
             img.addEventListener('click', () => {
                 currentImgIndex = index;
-                lightboxImg.src = img.src; // 클릭한 사진의 주소를 팝업에 복사
-                lightbox.style.display = 'flex'; // 팝업 띄우기
+                lightboxImg.src = img.src; 
+                lightbox.style.display = 'flex'; 
             });
         });
 
-        // 이전/다음 사진 넘기기
         function changeImage(direction) {
             currentImgIndex += direction;
-            // 끝에 도달하면 처음이나 마지막으로 순환
             if (currentImgIndex < 0) {
                 currentImgIndex = galleryImages.length - 1;
             } else if (currentImgIndex >= galleryImages.length) {
@@ -325,44 +337,25 @@
             lightboxImg.src = galleryImages[currentImgIndex].src;
         }
 
-        // 팝업 닫기
         function closeLightbox() {
             lightbox.style.display = 'none';
         }
 
-        // 팝업 배경을 터치해도 닫히도록 설정
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
+
         // 4. 불펌 및 캡처 방지 (PC 우클릭 및 단축키 차단)
-        
-        // 마우스 우클릭 방지
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // 텍스트 선택 방지 (모바일/PC 공통)
-        document.addEventListener('selectstart', function(e) {
-            e.preventDefault();
-        });
-
-        // PC 캡처 단축키 방지 (PrintScreen, Ctrl+P, Mac 캡처 등)
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
         document.addEventListener('keydown', function(e) {
-            // 윈도우 PrintScreen 키 차단
             if (e.key === 'PrintScreen' || e.keyCode === 44) {
                 alert("사진 보호를 위해 캡처가 제한되어 있습니다.");
                 e.preventDefault();
             }
-            // Ctrl + P (인쇄) 차단
-            if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) {
-                e.preventDefault();
-            }
-            // Mac 캡처 단축키 (Cmd + Shift + 3/4 등) 일부 차단 시도
-            if (e.metaKey && e.shiftKey) {
-                e.preventDefault();
-            }
+            if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) { e.preventDefault(); }
+            if (e.metaKey && e.shiftKey) { e.preventDefault(); }
         });
-    </script>
 </body>
 </html>
