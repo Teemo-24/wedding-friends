@@ -161,52 +161,41 @@
         <section>
             <h2>GALLERY</h2>
             
-            <!-- 💡 [상단] 테트리스 영역 (구조 수정됨) -->
+            <!-- [상단] 테트리스 영역 -->
             <div class="gallery">
-                <!-- 메인 큰 사진 (가로2 x 세로2) -->
-                <div class="size-4x"><img src="./images/photo1.jpg" onerror="this.src='https://via.placeholder.com/480x480?text=Photo+1+(4x)'"></div>
+                <!-- photo1: 메인 큰 사진 (전체 폭, 2x2 비율) -->
+                <div class="size-4x"><img src="./images/photo1.jpg" onerror="this.src='https://via.placeholder.com/480x480?text=Photo+1'"></div>
                 
-                <!-- 💡 요청하신 photo2, photo3 (각각 가로 2칸 x 세로 4칸의 2x4 크기 배치) -->
-                <div class="size-4x" style="grid-row: span 4;"><img src="./images/photo2.jpg" onerror="this.src='https://via.placeholder.com/480x720?text=Photo+2+(2x4)'"></div>
-                <div class="size-4x" style="grid-row: span 4;"><img src="./images/photo3.jpg" onerror="this.src='https://via.placeholder.com/480x720?text=Photo+3+(2x4)'"></div>
-                
-                <!-- 기존 photo4 (1칸) -->
-                <div><img src="./images/photo4.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+4'"></div>
-                
-                <!-- 신규 추가된 사진 좌우 2장 (photo19, photo20) -->
-                <div><img src="./images/photo19.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+19'"></div>
-                <div><img src="./images/photo20.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+20'"></div>
+                <!-- 💡 photo2, photo3: 2x4 비율로 좌우 나란히 배치 (세로로 아주 긴 사진 2장) -->
+                <div style="grid-column: span 1; grid-row: span 4;"><img src="./images/photo2.jpg" onerror="this.src='https://via.placeholder.com/240x720?text=Photo+2+(2x4)'"></div>
+                <div style="grid-column: span 1; grid-row: span 4;"><img src="./images/photo3.jpg" onerror="this.src='https://via.placeholder.com/240x720?text=Photo+3+(2x4)'"></div>
             </div>
             
-            <!-- [중단] 1:1 비율 사진 4개 (1번째 줄) -->
+            <!-- [중단] 1:1 비율 사진 4개씩 3줄 (photo4 ~ photo15) -->
             <div class="gallery row-of-4-standalone">
+                <div><img src="./images/photo4.jpg" onerror="this.src='https://via.placeholder.com/120?text=P4'"></div>
+                <div><img src="./images/photo5.jpg" onerror="this.src='https://via.placeholder.com/120?text=P5'"></div>
+                <div><img src="./images/photo6.jpg" onerror="this.src='https://via.placeholder.com/120?text=P6'"></div>
                 <div><img src="./images/photo7.jpg" onerror="this.src='https://via.placeholder.com/120?text=P7'"></div>
+            </div>
+            <div class="gallery row-of-4-standalone">
                 <div><img src="./images/photo8.jpg" onerror="this.src='https://via.placeholder.com/120?text=P8'"></div>
                 <div><img src="./images/photo9.jpg" onerror="this.src='https://via.placeholder.com/120?text=P9'"></div>
                 <div><img src="./images/photo10.jpg" onerror="this.src='https://via.placeholder.com/120?text=P10'"></div>
-            </div>
-
-            <!-- [중단] 1:1 비율 사진 4개 (2번째 줄) -->
-            <div class="gallery row-of-4-standalone">
                 <div><img src="./images/photo11.jpg" onerror="this.src='https://via.placeholder.com/120?text=P11'"></div>
+            </div>
+            <div class="gallery row-of-4-standalone">
                 <div><img src="./images/photo12.jpg" onerror="this.src='https://via.placeholder.com/120?text=P12'"></div>
                 <div><img src="./images/photo13.jpg" onerror="this.src='https://via.placeholder.com/120?text=P13'"></div>
                 <div><img src="./images/photo14.jpg" onerror="this.src='https://via.placeholder.com/120?text=P14'"></div>
-            </div>
-
-            <!-- [중단] 1:1 비율 사진 4개 (3번째 줄) -->
-            <div class="gallery row-of-4-standalone">
                 <div><img src="./images/photo15.jpg" onerror="this.src='https://via.placeholder.com/120?text=P15'"></div>
-                <div><img src="./images/photo16.jpg" onerror="this.src='https://via.placeholder.com/120?text=P16'"></div>
-                <div><img src="./images/photo17.jpg" onerror="this.src='https://via.placeholder.com/120?text=P17'"></div>
-                <div><img src="./images/photo18.jpg" onerror="this.src='https://via.placeholder.com/120?text=P18'"></div>
             </div>
 
-            <!-- [하단] 테트리스 영역 -->
+            <!-- [하단] 테트리스 영역 (photo16 ~ photo18) -->
             <div class="gallery">
-                <div class="size-2x-wide"><img src="./images/photo_wide.jpg" onerror="this.src='https://via.placeholder.com/480x180?text=Wide+Photo'"></div>
-                <div><img src="./images/photo5.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+5'"></div>
-                <div><img src="./images/photo6.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+6'"></div>
+                <div class="size-2x-wide"><img src="./images/photo16.jpg" onerror="this.src='https://via.placeholder.com/480x180?text=Photo+16+(Wide)'"></div>
+                <div><img src="./images/photo17.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+17'"></div>
+                <div><img src="./images/photo18.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+18'"></div>
             </div>
             
         </section>
