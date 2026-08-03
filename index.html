@@ -182,12 +182,12 @@
             </div>
         </section>
 
-        <!-- 📅 달력 섹션 -->
+       <!-- 📅 달력 섹션 -->
         <section>
             <h2>WEDDING DAY</h2>
             <div class="calendar-wrap">
-                <!-- 💡 1. 상단 예식일 날짜 수정 -->
-                <div class="calendar-header">2026. 10. 24</div>
+                <!-- 💡 예식일 및 시간 표기 -->
+                <div class="calendar-header">2026. 10. 03 (토) 오후 4:10</div>
                 <table class="calendar-table">
                     <thead>
                         <tr>
@@ -195,9 +195,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- 💡 2. 해당 월에 맞게 날짜(숫자) 위치 수정 -->
+                        <!-- 💡 2026년 10월 달력 배열 (1일이 목요일) -->
                         <tr>
-                            <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td class="sat">3</td>
+                            <td></td><td></td><td></td><td></td><td>1</td><td>2</td>
+                            <td class="sat">
+                                <!-- 💡 10월 3일(토)에 동그라미 강조 -->
+                                <div class="d-day-circle">3</div>
+                            </td>
                         </tr>
                         <tr>
                             <td class="sun">4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td class="sat">10</td>
@@ -206,11 +210,7 @@
                             <td class="sun">11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td class="sat">17</td>
                         </tr>
                         <tr>
-                            <td class="sun">18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
-                            <td class="sat">
-                                <!-- 💡 3. 예식일 날짜에 동그라미 효과 적용 -->
-                                <div class="d-day-circle">24</div>
-                            </td>
+                            <td class="sun">18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td class="sat">24</td>
                         </tr>
                         <tr>
                             <td class="sun">25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td class="sat">31</td>
@@ -477,8 +477,8 @@
         });
 
         // 5. D-Day 계산기
-        // 💡 아래 "2026-10-03." 부분을 실제 예식일로 변경해 주세요!
-        const weddingDate = new Date("2026-10-03T00:00:00");
+        // 💡 2026년 10월 3일 오후 4시 10분 기준
+        const weddingDate = new Date("2026-10-03T16:10:00");
         const today = new Date();
         const timeDiff = weddingDate.getTime() - today.getTime();
         const dDay = Math.ceil(timeDiff / (1000 * 3600 * 24));
