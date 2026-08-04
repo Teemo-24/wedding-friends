@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=7 을 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=7">
+    <!-- 💡 URL 뒤에 ?v=8 을 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=8">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -59,6 +59,54 @@
             min-height: 1.2em; 
         }
 
+        /* 🎵 메인화면 우측 상단 BGM 이퀄라이저 (볼륨 막대) 버튼 */
+        .volume-control {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 36px;
+            height: 36px;
+            z-index: 100;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+            transition: background 0.3s ease;
+        }
+        .volume-control:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .volume-control .bar {
+            width: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+            height: 4px; 
+            transition: height 0.2s ease;
+        }
+        /* 볼륨 막대 애니메이션 효과 */
+        .volume-control.playing .bar1 { animation: equalize 1s infinite alternate ease-in-out; }
+        .volume-control.playing .bar2 { animation: equalize 0.8s infinite alternate ease-in-out 0.2s; }
+        .volume-control.playing .bar3 { animation: equalize 1.2s infinite alternate ease-in-out 0.4s; }
+        .volume-control.playing .bar4 { animation: equalize 0.9s infinite alternate ease-in-out 0.1s; }
+
+        @keyframes equalize {
+            0% { height: 4px; }
+            50% { height: 16px; }
+            100% { height: 8px; }
+        }
+        /* 정지 상태 */
+        .volume-control:not(.playing) .bar {
+            height: 3px !important;
+            animation: none !important;
+        }
+        .volume-control:not(.playing) {
+            opacity: 0.6;
+        }
+
         /* 타이핑 깜빡임 커서 효과 */
         .typing-cursor::after { content: '|'; animation: blink 0.8s infinite; font-weight: 300; margin-left: 4px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -76,7 +124,7 @@
             word-break: keep-all; 
         }
 
-        /* 💑 신랑 신부 프로필 사진 및 이름 스타일 (신규 추가) */
+        /* 💑 신랑 신부 프로필 사진 및 이름 스타일 */
         .couple-profile-wrap { display: flex; justify-content: center; gap: 15px; margin-top: 30px; padding: 0 15px; }
         .couple-profile { flex: 1; display: flex; flex-direction: column; align-items: center; }
         .profile-img-box { width: 100%; aspect-ratio: 2 / 3; border-radius: 8px; overflow: hidden; background-color: #eee; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
@@ -92,12 +140,12 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            background-color: #fff; /* 초기 배경색: 흰색 */
+            background-color: #fff; 
             transition: background-color 1.2s ease-out; 
             border-bottom: 1px solid #f0f0f0;
         }
         .large-date-section.active {
-            background-color: #92a878; /* 활성화 시 배경색: 세이지 그린 */
+            background-color: #92a878; 
         }
         
         .large-date-text { 
@@ -105,14 +153,14 @@
             font-size: clamp(3.5em, 18vw, 6.5em); 
             font-weight: 300; 
             line-height: 1.3; 
-            color: #92a878; /* 초기 글씨색: 초록색 */
+            color: #92a878; 
             text-align: center; 
             margin: 0; 
-            white-space: nowrap; /* OCT 3 글씨가 줄바꿈되지 않고 일자로 유지되게 강제 */
+            white-space: nowrap; 
             transition: color 1.2s ease-out; 
         }
         .large-date-section.active .large-date-text {
-            color: #fff; /* 배경이 초록색이 되면 글씨는 흰색으로 변경 */
+            color: #fff; 
         }
 
         /* 🗓️ 4. 달력 및 타이머 스타일 (초록색 컨셉 적용) */
@@ -165,10 +213,6 @@
         /* 푸터 */
         footer { padding: 40px; background: #fafafa; font-size: 0.8em; color: #999; }
 
-        /* BGM 버튼 (초록색 테마 적용 #92a878) */
-        .bgm-btn { position: fixed; bottom: 25px; right: 25px; background: rgba(255, 255, 255, 0.9); border: 1px solid #ddd; border-radius: 30px; padding: 10px 16px; font-size: 0.85em; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1000; cursor: pointer; font-family: 'Pretendard', sans-serif; color: #555; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px; }
-        .bgm-btn.playing { background: #92a878; color: #fff; border-color: #92a878; }
-
         /* 🔍 라이트박스(사진 확대) 스타일 */
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; }
         .lightbox img { max-width: 95%; max-height: 80vh; border-radius: 8px; object-fit: contain; animation: fadeIn 0.3s; }
@@ -185,6 +229,15 @@
         <!-- 1. 메인 커버 및 사진 위 레터링 -->
         <div class="main-cover-container">
             <img src="./images/main.jpg" alt="메인 웨딩 사진" class="cover-img" onerror="this.src='https://via.placeholder.com/480x700?text=Main+Photo'">
+            
+            <!-- 💡 메인 우측 상단 BGM 이퀄라이저 (볼륨) 버튼 -->
+            <div id="new-bgm-toggle" class="volume-control">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+                <div class="bar bar4"></div>
+            </div>
+
             <div class="cover-lettering">
                 <p class="main-names" id="type-name"></p>
                 <p class="main-date" id="type-date"></p>
@@ -202,7 +255,7 @@
                 앞날을 축복해 주시면 감사하겠습니다.
             </div>
 
-            <!-- 💡 신랑 신부 2x3 사진 및 이름 (신규 추가) -->
+            <!-- 신랑 신부 2x3 사진 및 이름 -->
             <div class="couple-profile-wrap">
                 <div class="couple-profile">
                     <div class="profile-img-box">
@@ -382,7 +435,6 @@
         </footer>
 
         <audio id="bgm-audio" src="./audio/bgm.mp3" loop autoplay></audio>
-        <button id="bgm-toggle" class="bgm-btn"><span>🎵</span> BGM 켜기</button>
         
         <div id="lightbox" class="lightbox">
             <div class="close-btn" onclick="closeLightbox()">&times;</div>
@@ -424,18 +476,19 @@
             setTimeout(typeName, 500);
         });
 
-        // 2. BGM 자동 재생
+        // 2. BGM 이퀄라이저 컨트롤 기능
         const bgmAudio = document.getElementById('bgm-audio');
-        const bgmToggleBtn = document.getElementById('bgm-toggle');
-        let isPlaying = true; 
+        const bgmToggleBtn = document.getElementById('new-bgm-toggle');
+        let isPlaying = false; 
         
         let playPromise = bgmAudio.play();
         if (playPromise !== undefined) {
-            playPromise.then(_ => { isPlaying = true; })
-            .catch(error => {
+            playPromise.then(_ => { 
+                isPlaying = true; 
+                bgmToggleBtn.classList.add('playing');
+            }).catch(error => {
                 isPlaying = false;
                 bgmToggleBtn.classList.remove('playing');
-                bgmToggleBtn.innerHTML = '<span>🎵</span> BGM 켜기';
             });
         }
         bgmToggleBtn.addEventListener('click', function(e) {
@@ -443,11 +496,9 @@
             if (isPlaying) {
                 bgmAudio.pause();
                 bgmToggleBtn.classList.remove('playing');
-                bgmToggleBtn.innerHTML = '<span>🎵</span> BGM 켜기';
             } else {
                 bgmAudio.play();
                 bgmToggleBtn.classList.add('playing');
-                bgmToggleBtn.innerHTML = '<span>⏸️</span> BGM 끄기';
             }
             isPlaying = !isPlaying;
         });
@@ -459,7 +510,6 @@
                     playPromise.then(() => {
                         isPlaying = true;
                         bgmToggleBtn.classList.add('playing');
-                        bgmToggleBtn.innerHTML = '<span>⏸️</span> BGM 끄기';
                     }).catch(error => { console.log("자동 재생 보류됨"); });
                 }
             }
@@ -554,9 +604,9 @@
         const dateObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active'); // 보이면 섹션의 배경을 초록색으로
+                    entry.target.classList.add('active'); 
                 } else {
-                    entry.target.classList.remove('active'); // 안 보이면 다시 흰색 배경으로
+                    entry.target.classList.remove('active'); 
                 }
             });
         }, observerOptions);
