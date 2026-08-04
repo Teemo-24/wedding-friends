@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=11 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=11">
+    <!-- 💡 URL 뒤에 ?v=12 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=12">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -17,6 +17,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+        /* 💡 신규 추가: 대형 날짜용 우아한 리본(Cormorant Garamond) 폰트 */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap');
         
         body { font-family: 'Pretendard', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; text-align: center; }
         html, body { touch-action: pan-y; }
@@ -78,7 +80,20 @@
         /* 💫 대형 날짜 */
         .large-date-section { height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #fff; transition: background-color 1.2s ease-out; border-bottom: 1px solid #f0f0f0; }
         .large-date-section.active { background-color: #92a878; }
-        .large-date-text { font-family: 'Playfair Display', serif; font-size: clamp(3.5em, 18vw, 6.5em); font-weight: 300; line-height: 1.3; color: #92a878; text-align: center; margin: 0; white-space: nowrap; transition: color 1.2s ease-out; }
+        
+        /* 💡 수정됨: 이미지와 같은 리본 스타일 폰트 적용 (Cormorant Garamond) */
+        .large-date-text { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: clamp(3.5em, 18vw, 7em); 
+            font-weight: 400; 
+            line-height: 1.2; 
+            color: #92a878; 
+            text-align: center; 
+            margin: 0; 
+            white-space: nowrap; 
+            transition: color 1.2s ease-out; 
+            letter-spacing: 2px;
+        }
         .large-date-section.active .large-date-text { color: #fff; }
 
         /* 🗓️ 달력 및 타이머 */
