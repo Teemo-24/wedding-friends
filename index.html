@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=4 를 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=4">
+    <!-- 💡 URL 뒤에 ?v=5 를 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=5">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -74,6 +74,29 @@
             color: #444; 
             font-size: 1.05em; 
             word-break: keep-all; 
+        }
+
+        /* 💫 대형 날짜 스크롤 효과 섹션 (신규 추가) */
+        .large-date-section { 
+            height: 100vh; /* 화면 전체 높이 100% 차지 */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fff; 
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .large-date-text { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(3.5em, 22vw, 6.5em); /* 기기 화면에 맞춘 거대한 폰트 크기 */
+            font-weight: 300; 
+            line-height: 1.3; 
+            color: #fff; /* 초기 색상: 흰색 (배경과 같아 안 보임) */
+            text-align: center; 
+            margin: 0; 
+            transition: color 1.2s ease-out; /* 1.2초 동안 부드럽게 색상 전환 */
+        }
+        .large-date-text.active { 
+            color: #92a878; /* 스크롤 시 변경될 메인 테마 색상 */
         }
 
         /* 🗓️ 4. 달력 및 타이머 스타일 (초록색 컨셉 적용) */
@@ -165,6 +188,13 @@
                 <b>박윤기 · 신예은</b>
             </div>
         </section>
+
+        <!-- 💫 대형 날짜 풀스크린 섹션 (스크롤 효과) -->
+        <div class="large-date-section">
+            <h1 class="large-date-text" id="large-date-text">
+                OCT 3<br>2026
+            </h1>
+        </div>
 
         <!-- 📅 달력 섹션 (이미지 초록색 컨셉 및 타이머 추가) -->
         <section class="calendar-section">
@@ -443,7 +473,7 @@
             if (e.metaKey && e.shiftKey) { e.preventDefault(); }
         });
 
-        // 💡 5. 실시간 카운트다운 타이머 & D-Day 계산기 (이미지 컨셉 반영)
+        // 💡 5. 실시간 카운트다운 타이머 & D-Day 계산기
         const weddingDate = new Date("2026-10-03T16:10:00").getTime();
         
         function updateCountdown() {
@@ -454,13 +484,11 @@
             const countdownBox = document.getElementById('countdown-box');
 
             if (timeDiff > 0) {
-                // 남은 시간 계산
                 const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
                 
-                // 화면 업데이트 (항상 두 자리 수 유지 원하시면 padStart 적용 가능, 현재는 이미지처럼 자연스럽게 둠)
                 document.getElementById('d-days').innerText = days;
                 document.getElementById('d-hours').innerText = hours;
                 document.getElementById('d-mins').innerText = minutes;
@@ -468,7 +496,6 @@
                 
                 dDayTextEl.innerHTML = `윤기 ♥ 예은 결혼식이 <span class="highlight">${days}일</span> 남았습니다`;
             } else {
-                // 예식 시간이 지났을 경우 타이머 박스 숨김
                 if(countdownBox) countdownBox.style.display = 'none';
                 
                 const passedDays = Math.floor(Math.abs(timeDiff) / (1000 * 60 * 60 * 24));
@@ -480,9 +507,27 @@
             }
         }
         
-        // 1초마다 업데이트 실행
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // 초기 화면 로딩 시 즉시 실행
+        updateCountdown();
+
+        // 💡 6. 대형 날짜 스크롤 색상 변경 효과 (Intersection Observer)
+        const dateTextEl = document.getElementById('large-date-text');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // 화면의 50% 지점에 도달했을 때 색상 변경
+        };
+        const dateObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active'); // 보이면 초록색으로
+                } else {
+                    entry.target.classList.remove('active'); // 안 보이면 다시 흰색으로 숨김
+                }
+            });
+        }, observerOptions);
+        dateObserver.observe(dateTextEl);
+
     </script>
 </body>
 </html>
