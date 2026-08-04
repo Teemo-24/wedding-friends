@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=10 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=10">
+    <!-- 💡 URL 뒤에 ?v=11 을 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=11">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -36,8 +36,8 @@
         /* 🎵 우측 상단 모서리 BGM 버튼 */
         .volume-control {
             position: absolute; 
-            top: 12px; /* 💡 조금 더 모서리 쪽으로 위로 이동 */
-            right: 12px; /* 💡 조금 더 모서리 쪽으로 우측 이동 */
+            top: 12px;
+            right: 12px;
             width: 36px; height: 36px; z-index: 100; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 3px; background: rgba(0, 0, 0, 0.2); border-radius: 50%; backdrop-filter: blur(4px); transition: background 0.3s ease;
         }
         .volume-control:hover { background: rgba(0, 0, 0, 0.4); }
@@ -59,7 +59,7 @@
         section { padding: 60px 20px; border-bottom: 1px solid #f0f0f0; }
         h2 { font-size: 1.1em; color: #92a878; margin-bottom: 30px; letter-spacing: 3px; font-weight: 500; }
         
-        /* 🌸 초대글 및 꽃(SVG) 피어나는 애니메이션 */
+        /* 🌸 초대글 및 꽃(GIF) 피어나는 애니메이션 */
         .flower-icon { width: 45px; height: auto; margin: 0 auto 20px; display: block; opacity: 0; transform: translateY(20px); transition: opacity 1.5s ease, transform 1.5s ease; }
         .flower-icon.bloom { opacity: 0.85; transform: translateY(0); } /* 스크롤 시 발동 */
 
@@ -159,18 +159,8 @@
         
         <!-- 2. 모시는 글 -->
         <section>
-            <!-- 💡 이미지 파일 대신 코드로 직접 삽입된 감성 드로잉 꽃 SVG -->
-            <svg class="flower-icon" id="flower-anim" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50,110 Q45,80 50,55" stroke="#999" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                <path d="M50,85 Q65,75 60,65 Q55,60 50,75" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                <path d="M49,95 Q35,85 40,75 Q45,70 50,85" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                <circle cx="50" cy="45" r="4" stroke="#999" stroke-width="1.8" fill="none"/>
-                <path d="M50,41 C40,20 60,20 50,41" stroke="#999" stroke-width="1.5" fill="none"/>
-                <path d="M54,45 C75,35 70,55 54,49" stroke="#999" stroke-width="1.5" fill="none"/>
-                <path d="M52,49 C60,70 40,70 48,49" stroke="#999" stroke-width="1.5" fill="none"/>
-                <path d="M46,49 C25,55 30,35 46,45" stroke="#999" stroke-width="1.5" fill="none"/>
-                <path d="M47,42 C30,25 45,15 50,38" stroke="#999" stroke-width="1.5" fill="none"/>
-            </svg>
+            <!-- 💡 직접 공수하신 꽃 GIF 이미지 연동 -->
+            <img src="./images/flower.gif" class="flower-icon" id="flower-anim" alt="꽃 장식" onerror="this.style.display='none'">
 
             <div class="greeting-text">
                 사람이 온다는 건 실은 어마어마한 일이다.<br>
