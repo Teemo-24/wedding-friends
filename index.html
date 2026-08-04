@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=13 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=13">
+    <!-- 💡 URL 뒤에 ?v=14 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=14">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -17,7 +17,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
-        /* 💡 신규 추천 폰트: 하이엔드 명품 스타일의 Bodoni Moda */
+        /* 하이엔드 명품 스타일의 Bodoni Moda */
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&display=swap');
         
         body { font-family: 'Pretendard', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; text-align: center; }
@@ -81,10 +81,9 @@
         .large-date-section { height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #fff; transition: background-color 1.2s ease-out; border-bottom: 1px solid #f0f0f0; }
         .large-date-section.active { background-color: #92a878; }
         
-        /* 💡 수정됨: 숫자 높이와 라인을 맞추는 코드(font-variant-numeric) 및 새 폰트 적용 */
         .large-date-text { 
-            font-family: 'Bodoni Moda', serif; /* 명품 브랜드 느낌의 세리프 폰트 */
-            font-variant-numeric: lining-nums; /* 숫자의 라인과 크기를 완벽하게 일자로 맞추는 속성 */
+            font-family: 'Bodoni Moda', serif; 
+            font-variant-numeric: lining-nums; 
             font-size: clamp(3.5em, 18vw, 7em); 
             font-weight: 400; 
             line-height: 1.2; 
@@ -100,9 +99,14 @@
         /* 🗓️ 달력 및 타이머 */
         .calendar-section { background-color: #fafafa; padding-bottom: 80px; }
         .calendar-wrap { padding: 10px 0; }
-        .calendar-header { font-size: 2.2em; color: #555; margin-bottom: 5px; font-weight: 300; font-family: 'Playfair Display', serif; letter-spacing: 1px; } 
-        .calendar-date-ko { font-size: 1.05em; color: #555; margin-top: 30px; }
-        .calendar-date-en { font-size: 0.85em; color: #aaa; margin-top: 5px; margin-bottom: 30px; font-weight: 300; }
+        
+        /* 💡 수정됨: WEDDING DAY 텍스트 색상을 초록색(#92a878)으로 변경 */
+        .calendar-header { font-size: 2.2em; color: #92a878; margin-bottom: 5px; font-weight: 300; font-family: 'Playfair Display', serif; letter-spacing: 1px; } 
+        
+        /* 💡 수정됨: 한글 날짜 폰트 고운바탕으로 고급스럽게 변경 */
+        .calendar-date-ko { font-family: 'Gowun Batang', serif; font-size: 1.1em; color: #555; margin-top: 30px; font-weight: 600; }
+        /* 💡 수정됨: 영문 날짜 폰트 Bodoni Moda로 고급스럽게 변경 */
+        .calendar-date-en { font-family: 'Bodoni Moda', serif; font-size: 0.9em; color: #aaa; margin-top: 5px; margin-bottom: 30px; font-weight: 400; letter-spacing: 0.5px; }
         
         .calendar-table { width: 100%; max-width: 340px; margin: 0 auto; border-collapse: collapse; font-size: 0.95em; color: #444; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea; }
         .calendar-table th, .calendar-table td { padding: 16px 0; text-align: center; width: 14.28%; }
@@ -219,6 +223,8 @@
         <section class="calendar-section">
             <div class="calendar-wrap">
                 <div class="calendar-header">WEDDING DAY</div>
+                
+                <!-- 💡 폰트가 고급스럽게 변경된 영역 -->
                 <div class="calendar-date-ko">2026년 10월 3일 토요일 | 오후 4시 10분</div>
                 <div class="calendar-date-en">Saturday, October 3, 2026 | PM 4:10</div>
                 
