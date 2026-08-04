@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=14 를 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=14">
+    <!-- 💡 URL 뒤에 ?v=15 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=15">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -100,12 +100,8 @@
         .calendar-section { background-color: #fafafa; padding-bottom: 80px; }
         .calendar-wrap { padding: 10px 0; }
         
-        /* 💡 수정됨: WEDDING DAY 텍스트 색상을 초록색(#92a878)으로 변경 */
         .calendar-header { font-size: 2.2em; color: #92a878; margin-bottom: 5px; font-weight: 300; font-family: 'Playfair Display', serif; letter-spacing: 1px; } 
-        
-        /* 💡 수정됨: 한글 날짜 폰트 고운바탕으로 고급스럽게 변경 */
         .calendar-date-ko { font-family: 'Gowun Batang', serif; font-size: 1.1em; color: #555; margin-top: 30px; font-weight: 600; }
-        /* 💡 수정됨: 영문 날짜 폰트 Bodoni Moda로 고급스럽게 변경 */
         .calendar-date-en { font-family: 'Bodoni Moda', serif; font-size: 0.9em; color: #aaa; margin-top: 5px; margin-bottom: 30px; font-weight: 400; letter-spacing: 0.5px; }
         
         .calendar-table { width: 100%; max-width: 340px; margin: 0 auto; border-collapse: collapse; font-size: 0.95em; color: #444; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea; }
@@ -224,7 +220,6 @@
             <div class="calendar-wrap">
                 <div class="calendar-header">WEDDING DAY</div>
                 
-                <!-- 💡 폰트가 고급스럽게 변경된 영역 -->
                 <div class="calendar-date-ko">2026년 10월 3일 토요일 | 오후 4시 10분</div>
                 <div class="calendar-date-en">Saturday, October 3, 2026 | PM 4:10</div>
                 
@@ -296,16 +291,21 @@
                 <div><img src="./images/photo18.jpg" onerror="this.src='https://via.placeholder.com/120?text=P18'"></div>
                 <div><img src="./images/photo19.jpg" onerror="this.src='https://via.placeholder.com/120?text=P19'"></div>
             </div>
-            <div class="gallery" style="grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; margin: 10px 0;">
-                <div style="aspect-ratio: 2 / 1;"><img src="./images/photo20.jpg" onerror="this.src='https://via.placeholder.com/240x120?text=Photo+20+(2x1)'"></div>
-                <div style="aspect-ratio: 2 / 1;"><img src="./images/photo21.jpg" onerror="this.src='https://via.placeholder.com/240x120?text=Photo+21+(2x1)'"></div>
+
+            <!-- 💡 [수정] photo21(2x1) 1개를 photo21, photo22(1x1) 2개로 분할 -->
+            <div class="gallery" style="grid-template-columns: repeat(4, 1fr); grid-auto-rows: auto; margin: 10px 0;">
+                <div style="grid-column: span 2; aspect-ratio: 2 / 1;"><img src="./images/photo20.jpg" onerror="this.src='https://via.placeholder.com/240x120?text=Photo+20+(2x1)'"></div>
+                <div style="grid-column: span 1; aspect-ratio: 1 / 1;"><img src="./images/photo21.jpg" onerror="this.src='https://via.placeholder.com/120?text=P21'"></div>
+                <div style="grid-column: span 1; aspect-ratio: 1 / 1;"><img src="./images/photo22.jpg" onerror="this.src='https://via.placeholder.com/120?text=P22'"></div>
             </div>
-            <div class="gallery row-of-4-standalone">
-                <div><img src="./images/photo22.jpg" onerror="this.src='https://via.placeholder.com/120?text=P22'"></div>
-                <div><img src="./images/photo23.jpg" onerror="this.src='https://via.placeholder.com/120?text=P23'"></div>
-                <div><img src="./images/photo24.jpg" onerror="this.src='https://via.placeholder.com/120?text=P24'"></div>
-                <div><img src="./images/photo25.jpg" onerror="this.src='https://via.placeholder.com/120?text=P25'"></div>
+
+            <!-- 💡 [수정] photo24, photo25(1x1) 2개를 photo25(2x1) 1개로 병합 -->
+            <div class="gallery" style="grid-template-columns: repeat(4, 1fr); grid-auto-rows: auto; margin: 10px 0;">
+                <div style="grid-column: span 1; aspect-ratio: 1 / 1;"><img src="./images/photo23.jpg" onerror="this.src='https://via.placeholder.com/120?text=P23'"></div>
+                <div style="grid-column: span 1; aspect-ratio: 1 / 1;"><img src="./images/photo24.jpg" onerror="this.src='https://via.placeholder.com/120?text=P24'"></div>
+                <div style="grid-column: span 2; aspect-ratio: 2 / 1;"><img src="./images/photo25.jpg" onerror="this.src='https://via.placeholder.com/240x120?text=Photo+25+(2x1)'"></div>
             </div>
+
             <div class="gallery">
                 <div class="size-2x-wide"><img src="./images/photo26.jpg" onerror="this.src='https://via.placeholder.com/480x180?text=Photo+26+(Wide)'"></div>
                 <div><img src="./images/photo27.jpg" onerror="this.src='https://via.placeholder.com/240x180?text=Photo+27'"></div>
