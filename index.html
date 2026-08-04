@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=5 를 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=5">
+    <!-- 💡 URL 뒤에 ?v=6 을 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=6">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -76,27 +76,33 @@
             word-break: keep-all; 
         }
 
-        /* 💫 대형 날짜 스크롤 효과 섹션 (신규 추가) */
+        /* 💫 대형 날짜 스크롤 배경색 변경 효과 섹션 */
         .large-date-section { 
-            height: 100vh; /* 화면 전체 높이 100% 차지 */
+            height: 100vh; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            background: #fff; 
+            background-color: #fff; /* 초기 배경색: 흰색 */
+            transition: background-color 1.2s ease-out; 
             border-bottom: 1px solid #f0f0f0;
         }
+        .large-date-section.active {
+            background-color: #92a878; /* 활성화 시 배경색: 세이지 그린 */
+        }
+        
         .large-date-text { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(3.5em, 22vw, 6.5em); /* 기기 화면에 맞춘 거대한 폰트 크기 */
+            font-size: clamp(3.5em, 18vw, 6.5em); 
             font-weight: 300; 
             line-height: 1.3; 
-            color: #fff; /* 초기 색상: 흰색 (배경과 같아 안 보임) */
+            color: #92a878; /* 초기 글씨색: 초록색 */
             text-align: center; 
             margin: 0; 
-            transition: color 1.2s ease-out; /* 1.2초 동안 부드럽게 색상 전환 */
+            white-space: nowrap; /* OCT 3 글씨가 줄바꿈되지 않고 일자로 유지되게 강제 */
+            transition: color 1.2s ease-out; 
         }
-        .large-date-text.active { 
-            color: #92a878; /* 스크롤 시 변경될 메인 테마 색상 */
+        .large-date-section.active .large-date-text {
+            color: #fff; /* 배경이 초록색이 되면 글씨는 흰색으로 변경 */
         }
 
         /* 🗓️ 4. 달력 및 타이머 스타일 (초록색 컨셉 적용) */
@@ -110,8 +116,7 @@
         .calendar-table { width: 100%; max-width: 340px; margin: 0 auto; border-collapse: collapse; font-size: 0.95em; color: #444; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea; }
         .calendar-table th, .calendar-table td { padding: 16px 0; text-align: center; width: 14.28%; }
         .calendar-table th { font-weight: 500; color: #333; font-size: 0.9em; }
-        .calendar-table .sun { color: #f48b8b; } /* 일요일 코랄/핑크색 */
-        /* 토요일은 기본 색상 유지 (이미지 참고) */
+        .calendar-table .sun { color: #f48b8b; } 
         
         /* 예식일 동그라미 강조 (초록색) */
         .d-day-circle { width: 34px; height: 34px; line-height: 34px; background-color: #92a878; color: #fff; border-radius: 50%; margin: 0 auto; font-weight: 500; }
@@ -189,17 +194,17 @@
             </div>
         </section>
 
-        <!-- 💫 대형 날짜 풀스크린 섹션 (스크롤 효과) -->
-        <div class="large-date-section">
-            <h1 class="large-date-text" id="large-date-text">
+        <!-- 💫 대형 날짜 풀스크린 섹션 (스크롤 시 배경색 효과) -->
+        <div class="large-date-section" id="large-date-section">
+            <h1 class="large-date-text">
                 OCT 3<br>2026
             </h1>
         </div>
 
-        <!-- 📅 달력 섹션 (이미지 초록색 컨셉 및 타이머 추가) -->
+        <!-- 📅 달력 섹션 -->
         <section class="calendar-section">
             <div class="calendar-wrap">
-                <!-- 💡 타이틀 및 날짜 (이미지 스타일) -->
+                <!-- 💡 타이틀 및 날짜 -->
                 <div class="calendar-header">WEDDING DAY</div>
                 <div class="calendar-date-ko">2026년 10월 3일 토요일 | 오후 4시 10분</div>
                 <div class="calendar-date-en">Saturday, October 3, 2026 | PM 4:10</div>
@@ -232,7 +237,7 @@
                     </tbody>
                 </table>
                 
-                <!-- 💡 신규 추가: 카운트다운 타이머 박스 -->
+                <!-- 💡 카운트다운 타이머 박스 -->
                 <div class="countdown-box" id="countdown-box">
                     <div class="count-item">
                         <span class="count-num" id="d-days">00</span>
@@ -510,8 +515,8 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 💡 6. 대형 날짜 스크롤 색상 변경 효과 (Intersection Observer)
-        const dateTextEl = document.getElementById('large-date-text');
+        // 💡 6. 대형 날짜 배경 스크롤 색상 변경 효과 (Intersection Observer)
+        const dateSectionEl = document.getElementById('large-date-section');
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -520,13 +525,13 @@
         const dateObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active'); // 보이면 초록색으로
+                    entry.target.classList.add('active'); // 보이면 섹션의 배경을 초록색으로
                 } else {
-                    entry.target.classList.remove('active'); // 안 보이면 다시 흰색으로 숨김
+                    entry.target.classList.remove('active'); // 안 보이면 다시 흰색 배경으로
                 }
             });
         }, observerOptions);
-        dateObserver.observe(dateTextEl);
+        dateObserver.observe(dateSectionEl);
 
     </script>
 </body>
