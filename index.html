@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=6 을 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=6">
+    <!-- 💡 URL 뒤에 ?v=7 을 붙여 카카오톡의 과거 기억(캐시)을 강제로 지웁니다 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=7">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -75,6 +75,16 @@
             font-size: 1.05em; 
             word-break: keep-all; 
         }
+
+        /* 💑 신랑 신부 프로필 사진 및 이름 스타일 (신규 추가) */
+        .couple-profile-wrap { display: flex; justify-content: center; gap: 15px; margin-top: 30px; padding: 0 15px; }
+        .couple-profile { flex: 1; display: flex; flex-direction: column; align-items: center; }
+        .profile-img-box { width: 100%; aspect-ratio: 2 / 3; border-radius: 8px; overflow: hidden; background-color: #eee; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+        .profile-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .profile-name { font-size: 1.05em; color: #444; font-family: 'Gowun Batang', serif; font-weight: 600; }
+        .profile-name .role { font-size: 0.85em; margin-right: 6px; font-weight: 500; }
+        .role.groom { color: #83a2ce; } /* 파스텔 블루 */
+        .role.bride { color: #e89f9f; } /* 파스텔 핑크 */
 
         /* 💫 대형 날짜 스크롤 배경색 변경 효과 섹션 */
         .large-date-section { 
@@ -189,8 +199,27 @@
                 이제 함께 한 곳을 바라보며 걸어갈 수 있는<br>
                 큰 사랑으로 키우고자 합니다.<br><br>
                 저희 두 사람이 사랑의 이름으로 지켜나갈 수 있게<br>
-                앞날을 축복해 주시면 감사하겠습니다.<br><br>
-                <b>박윤기 · 신예은</b>
+                앞날을 축복해 주시면 감사하겠습니다.
+            </div>
+
+            <!-- 💡 신랑 신부 2x3 사진 및 이름 (신규 추가) -->
+            <div class="couple-profile-wrap">
+                <div class="couple-profile">
+                    <div class="profile-img-box">
+                        <img src="./images/photo01.jpg" alt="신랑 박윤기" onerror="this.src='https://via.placeholder.com/200x300?text=Groom'">
+                    </div>
+                    <div class="profile-name">
+                        <span class="role groom">신랑</span> 박윤기
+                    </div>
+                </div>
+                <div class="couple-profile">
+                    <div class="profile-img-box">
+                        <img src="./images/photo02.jpg" alt="신부 신예은" onerror="this.src='https://via.placeholder.com/200x300?text=Bride'">
+                    </div>
+                    <div class="profile-name">
+                        <span class="role bride">신부</span> 신예은
+                    </div>
+                </div>
             </div>
         </section>
 
