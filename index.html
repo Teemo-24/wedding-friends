@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=20 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=20">
+    <!-- 💡 URL 뒤에 ?v=22 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=22">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -440,7 +440,7 @@
             </div>
         </section>
 
-        <!-- 마음 전하실 곳 (아코디언 형태) -->
+        <!-- 마음 전하실 곳 -->
         <section style="border-bottom: none; padding-bottom: 80px;">
             <svg class="flower-icon" style="width: 35px; margin-bottom: 10px;" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50,110 Q45,80 50,55" stroke="#999" stroke-width="1.8" fill="none" stroke-linecap="round"/>
@@ -452,12 +452,6 @@
                 <path d="M52,49 C60,70 40,70 48,49" stroke="#999" stroke-width="1.5" fill="none"/>
             </svg>
             <h2 style="font-family: 'Gowun Batang', serif; font-size: 1.4em; color: #555; margin-bottom: 25px; letter-spacing: 0;">마음 전하실 곳</h2>
-
-            <!-- 💡 화환 사양 문구 (추가됨) -->
-            <div style="margin-bottom: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
-                식장 사정상 <b>축하 화환</b>은 정중히 사양합니다.<br>
-                보내주시는 따뜻한 마음만 감사히 받겠습니다.
-            </div>
 
             <div class="account-wrap">
                 <!-- 신랑측 계좌 -->
@@ -491,20 +485,28 @@
                     </div>
                     <div class="account-item">
                         <div class="acc-info">
-                            <span class="acc-bank">신한</span> <span class="acc-num">110484402863</span>
-                            <div class="acc-name">신동현 </div>
-                        </div>
-                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
-                    </div>
-                    <div class="account-item">
-                        <div class="acc-info">
                             <span class="acc-bank">농협</span> <span class="acc-num">3522261964743</span>
                             <div class="acc-name">박선심</div>
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('3522261964743')">복사</button>
                     </div>
+                    <!-- 은행명, 예금주명 미상인 계좌 -->
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">은행명</span> <span class="acc-num">110484402863</span>
+                            <div class="acc-name">예금주</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
+                    </div>
                 </div>
             </div>
+
+            <!-- 💡 화환 사양 문구 (수정됨) -->
+            <div style="margin-top: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
+                보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다.<br>
+                귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
+            </div>
+
         </section>
         
         <footer>
@@ -687,7 +689,7 @@
             document.body.appendChild(t);
             t.value = val;
             t.select();
-            document.execCommand('copy');ㄹ
+            document.execCommand('copy');
             document.body.removeChild(t);
             alert('계좌번호가 복사되었습니다.');
         }
