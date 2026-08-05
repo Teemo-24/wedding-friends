@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=24 를 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=24">
+    <!-- 💡 URL 뒤에 ?v=25 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=25">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -34,6 +34,33 @@
         .cover-lettering .main-date { font-family: 'Great Vibes', cursive; font-size: 1.8em; letter-spacing: 1px; margin: 0; font-weight: 400; min-height: 1.2em; }
         .typing-cursor::after { content: '|'; animation: blink 0.8s infinite; font-weight: 300; margin-left: 4px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* 🌸 메인 꽃가루 애니메이션 CSS 추가 */
+        #petal-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            pointer-events: none; /* 클릭 이벤트를 통과시켜 BGM 버튼 조작에 방해되지 않음 */
+            z-index: 50;
+        }
+        .petal {
+            position: absolute;
+            background-color: #ffd1dc; /* 기본 벚꽃색 */
+            border-radius: 15px 0px 15px 0px; /* 꽃잎 모양 */
+            opacity: 0;
+            animation: fall linear infinite;
+            box-shadow: inset 0 0 4px rgba(255,255,255,0.6);
+        }
+        .petal.type2 { background-color: #ffecf0; border-radius: 50%; } /* 원형 흩날림 */
+        .petal.type3 { background-color: #ffb6c1; border-radius: 0px 15px 0px 15px; } /* 반대 모양 */
+
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { top: 110%; transform: translateX(var(--moveX, 50px)) rotate(720deg); opacity: 0; }
+        }
 
         /* 🎵 우측 상단 모서리 BGM 버튼 */
         .volume-control {
@@ -216,6 +243,9 @@
         <div class="main-cover-container">
             <img src="./images/main.jpg" alt="메인 웨딩 사진" class="cover-img" onerror="this.src='https://via.placeholder.com/480x700?text=Main+Photo'">
             
+            <!-- 🌸 꽃가루가 담길 컨테이너 추가 -->
+            <div id="petal-container"></div>
+
             <div id="new-bgm-toggle" class="volume-control">
                 <div class="bar bar1"></div>
                 <div class="bar bar2"></div>
@@ -392,7 +422,6 @@
 
             <div class="transport-info" style="margin-top: 40px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
                 
-                <!-- 💡 [수정됨] 간격(margin-bottom)을 넓혀 섹터별로 시원하게 분리 -->
                 <div style="margin-bottom: 45px;">
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚗 자가용 이용 시</h3>
                     
@@ -417,7 +446,6 @@
                     </div>
                 </div>
 
-                <!-- 💡 [수정됨] 리스트(li) 태그에 margin-bottom을 주어 각 항목 간 여백 확보 -->
                 <div style="margin-bottom: 45px;">
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚇 지하철 이용 시</h3>
                     <ul style="margin: 0; padding-left: 20px;">
@@ -444,7 +472,6 @@
 
         <!-- 마음 전하실 곳 -->
         <section style="border-bottom: none; padding-bottom: 80px;">
-            <!-- 💡 [수정됨] 꽃 아이콘 색상 세이지 그린(#92a878)으로 변경 -->
             <svg class="flower-icon" style="width: 35px; margin-bottom: 10px;" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50,110 Q45,80 50,55" stroke="#92a878" stroke-width="1.8" fill="none" stroke-linecap="round"/>
                 <path d="M50,85 Q65,75 60,65 Q55,60 50,75" stroke="#92a878" stroke-width="1.5" fill="none" stroke-linecap="round"/>
@@ -455,10 +482,8 @@
                 <path d="M52,49 C60,70 40,70 48,49" stroke="#92a878" stroke-width="1.5" fill="none"/>
             </svg>
             
-            <!-- 💡 [수정됨] 텍스트 색상 세이지 그린(#92a878)으로 변경 -->
             <h2 style="font-family: 'Gowun Batang', serif; font-size: 1.4em; color: #92a878; margin-bottom: 15px; letter-spacing: 0;">마음 전하실 곳</h2>
 
-            <!-- 💡 [추가됨] 감동적인 인사 문구 추가 -->
             <div style="font-family: 'Gowun Batang', serif; font-size: 1.05em; color: #555; line-height: 1.8; margin-bottom: 30px;">
                 함께해 주시는 마음, 멀리서 전해주시는 마음<br>
                 모두 소중히 간직하겠습니다.
@@ -563,7 +588,42 @@
         document.addEventListener('DOMContentLoaded', () => {
             nameEl.classList.add('typing-cursor');
             setTimeout(typeName, 500);
+            
+            // 🌸 꽃가루 생성 기능 실행
+            createPetals();
         });
+
+        // 🌸 흩날리는 꽃가루 생성 기능
+        function createPetals() {
+            const container = document.getElementById('petal-container');
+            if (!container) return;
+            const petalCount = 40; 
+            const types = ['type1', 'type2', 'type3'];
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                
+                const randomType = types[Math.floor(Math.random() * types.length)];
+                if(randomType !== 'type1') petal.classList.add(randomType);
+                
+                const left = Math.random() * 100; 
+                const size = Math.random() * 8 + 6; // 6~14px
+                const duration = Math.random() * 6 + 5; // 5~11초 떨어지는 속도
+                const delay = Math.random() * 5; // 생성 지연 시간
+                const direction = Math.random() > 0.5 ? 1 : -1; 
+                const moveX = Math.random() * 80 * direction; // 좌우 이동 범위
+                
+                petal.style.left = `${left}%`;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                petal.style.setProperty('--moveX', `${moveX}px`);
+                
+                container.appendChild(petal);
+            }
+        }
 
         // 2. BGM 이퀄라이저 컨트롤 기능
         const bgmAudio = document.getElementById('bgm-audio');
