@@ -335,22 +335,34 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=광명역+라포에트" target="_blank" class="map-btn">🔵 구글맵</a>
             </div>
 
-            <!-- 💡 [신규 추가] 상세 교통 및 주차 안내 영역 -->
+            <!-- 💡 상세 교통 및 주차 안내 영역 -->
             <div class="transport-info" style="margin-top: 40px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
                 
                 <!-- 자가용/주차 안내 -->
                 <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚗 자가용 이용 시 (2시간 무료 주차)</h3>
+                    <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚗 자가용 이용 시</h3>
+                    
+                    <!-- 💡 주차장 위치 이미지 추가 -->
+                    <div style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid #eee;">
+                        <img src="./images/parking.jpg" alt="주차장 안내" style="width: 100%; display: block;" onerror="this.src='https://via.placeholder.com/480x300?text=Parking+Map'">
+                    </div>
+
                     <p style="margin: 0 0 15px 0;">
                         <b>[제1주차장] 센트럴자이 상가 주차장 B3층</b><br>
                         내비게이션: 경기도 광명시 광명역로 28<br>
                         (광명 센트럴자이 오피스텔 입력)
                     </p>
-                    <p style="margin: 0;">
+                    <p style="margin: 0 0 15px 0;">
                         <b>[제2주차장] 파크자이 상가 주차장 B2층</b><br>
                         내비게이션: 경기도 광명시 광명역로 26<br>
                         (광명 파크자이 오피스텔 입력)
                     </p>
+
+                    <!-- 💡 2시간 무료 및 정산 안내 문구 하단 이동/추가 -->
+                    <div style="background-color: #fafafa; padding: 12px 15px; border-radius: 6px; border: 1px solid #e9e9e9; font-size: 0.95em; line-height: 1.6;">
+                        <span style="color: #d97070; font-weight: 600;">※ 2시간 무료 주차</span><br>
+                        연회장·예약실 정산 후 출차
+                    </div>
                 </div>
 
                 <!-- 지하철 안내 -->
