@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=26 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=26">
+    <!-- 💡 URL 뒤에 ?v=27 을 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=27">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -35,7 +35,7 @@
         .typing-cursor::after { content: '|'; animation: blink 0.8s infinite; font-weight: 300; margin-left: 4px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* 🌸 메인 꽃가루 애니메이션 (수정됨: 흰색 꽃 모양) */
+        /* 🌸 메인 꽃가루 애니메이션 (흰색 꽃 모양) */
         #petal-container {
             position: absolute;
             top: 0; left: 0;
@@ -46,8 +46,8 @@
         }
         .petal {
             position: absolute;
-            color: rgba(255, 255, 255, 0.95); /* 흰색 적용 */
-            text-shadow: 0 0 4px rgba(255, 255, 255, 0.6); /* 은은한 빛 효과 */
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
             opacity: 0;
             animation: fall linear infinite;
         }
@@ -90,7 +90,7 @@
 
         .greeting-text { font-family: 'Gowun Batang', serif; line-height: 2.2; color: #444; font-size: 1.05em; word-break: keep-all; }
         
-        /* 💡 신랑 신부 프로필 (수정됨: 간격과 여백을 줄여 사진을 더 크게 표시) */
+        /* 신랑 신부 프로필 */
         .couple-profile-wrap { display: flex; justify-content: center; gap: 8px; margin-top: 40px; padding: 0 5px; }
         .couple-profile { flex: 1; display: flex; flex-direction: column; align-items: center; }
         .profile-img-box { width: 100%; aspect-ratio: 2 / 3; border-radius: 8px; overflow: hidden; background-color: #eee; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
@@ -402,7 +402,6 @@
                 <p style="font-weight: 600; font-size: 1.2em;">라포에트(구.광명역사컨벤션)</p>
                 <p style="font-size: 0.95em; color: #555; line-height: 1.6;">
                     🤍 경기도 광명시 광명역로 21 동편 지하 1층<br>
-                    <!-- 💡 [수정됨] 02-899-7400 으로 전화번호 변경 -->
                     02-899-7400
                 </p>
             </div>
@@ -417,7 +416,8 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=광명역+라포에트" target="_blank" class="map-btn">🔵 구글맵</a>
             </div>
 
-            <div class="transport-info" style="margin-top: 40px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
+            <!-- 💡 [수정됨] map-buttons와 transport-info 사이 간격을 넓히기 위해 margin-top 값을 70px로 변경 -->
+            <div class="transport-info" style="margin-top: 70px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
                 
                 <div style="margin-bottom: 45px;">
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚗 자가용 이용 시</h3>
