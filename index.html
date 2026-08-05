@@ -491,18 +491,17 @@
                     </div>
                     <div class="account-item">
                         <div class="acc-info">
+                            <span class="acc-bank">신한</span> <span class="acc-num">110484402863</span>
+                            <div class="acc-name">신동현 </div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
+                    </div>
+                    <div class="account-item">
+                        <div class="acc-info">
                             <span class="acc-bank">농협</span> <span class="acc-num">3522261964743</span>
                             <div class="acc-name">박선심</div>
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('3522261964743')">복사</button>
-                    </div>
-                    <!-- 은행명, 예금주명 미상인 계좌 -->
-                    <div class="account-item">
-                        <div class="acc-info">
-                            <span class="acc-bank">은행명</span> <span class="acc-num">110484402863</span>
-                            <div class="acc-name">예금주</div>
-                        </div>
-                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
                     </div>
                 </div>
             </div>
@@ -688,7 +687,7 @@
             document.body.appendChild(t);
             t.value = val;
             t.select();
-            document.execCommand('copy');
+            document.execCommand('copy');ㄹ
             document.body.removeChild(t);
             alert('계좌번호가 복사되었습니다.');
         }
