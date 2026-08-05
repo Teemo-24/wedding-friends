@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=22 를 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=22">
+    <!-- 💡 URL 뒤에 ?v=23 을 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=23">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -392,6 +392,7 @@
 
             <div class="transport-info" style="margin-top: 40px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
                 
+                <!-- 💡 [수정됨] 주차장 'B3층', 'B2층' 문구 간소화 -->
                 <div style="margin-bottom: 25px;">
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚗 자가용 이용 시</h3>
                     
@@ -400,12 +401,12 @@
                     </div>
 
                     <p style="margin: 0 0 15px 0;">
-                        <b>[제1주차장] 센트럴자이 상가 주차장 B3층</b><br>
+                        <b>[제1주차장] 센트럴자이 상가 주차장</b><br>
                         내비게이션: 경기도 광명시 광명역로 28<br>
                         (광명 센트럴자이 오피스텔 입력)
                     </p>
                     <p style="margin: 0 0 15px 0;">
-                        <b>[제2주차장] 파크자이 상가 주차장 B2층</b><br>
+                        <b>[제2주차장] 파크자이 상가 주차장</b><br>
                         내비게이션: 경기도 광명시 광명역로 26<br>
                         (광명 파크자이 오피스텔 입력)
                     </p>
@@ -426,8 +427,9 @@
 
                 <div>
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚌 버스 이용 시 (KTX 광명역 하차)</h3>
+                    <!-- 💡 [수정됨] 8507 번호 바로 뒤에 <br> 줄바꿈 적용 -->
                     <ul style="margin: 0; padding-left: 20px; font-size: 0.9em;">
-                        <li><b>KTX광명역 셔틀버스:</b> 8507 (사당역 4번출구 ↔ 서울대입구역 2번출구 ↔ KTX광명역)</li>
+                        <li><b>KTX광명역 셔틀버스:</b> 8507<br>(사당역 4번출구 ↔ 서울대입구역 2번출구 ↔ KTX광명역)</li>
                         <li><b>마을버스:</b> 1-1 (관악역), 1-3 (석수역), 88 (소하동)</li>
                         <li><b>일반버스:</b> 12, 17, 22, 75, 3, 8-2, 11-3, 50, 77, 102</li>
                         <li><b>간선버스 (파랑):</b> 505</li>
@@ -473,7 +475,7 @@
                     </div>
                 </div>
 
-                <!-- 신부측 계좌 -->
+                <!-- 💡 [수정됨] 신부측 계좌 (신동현 님 추가 및 순서 변경) -->
                 <button class="accordion-btn" style="margin-top: 10px;">신부측 계좌번호 <span class="arrow">⌄</span></button>
                 <div class="accordion-content">
                     <div class="account-item">
@@ -485,23 +487,22 @@
                     </div>
                     <div class="account-item">
                         <div class="acc-info">
+                            <span class="acc-bank">신한</span> <span class="acc-num">110484402863</span>
+                            <div class="acc-name">신동현</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
+                    </div>
+                    <div class="account-item">
+                        <div class="acc-info">
                             <span class="acc-bank">농협</span> <span class="acc-num">3522261964743</span>
                             <div class="acc-name">박선심</div>
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('3522261964743')">복사</button>
                     </div>
-                    <!-- 은행명, 예금주명 미상인 계좌 -->
-                    <div class="account-item">
-                        <div class="acc-info">
-                            <span class="acc-bank">은행명</span> <span class="acc-num">110484402863</span>
-                            <div class="acc-name">예금주</div>
-                        </div>
-                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
-                    </div>
                 </div>
             </div>
 
-            <!-- 💡 화환 사양 문구 (수정됨) -->
+            <!-- 화환 사양 문구 -->
             <div style="margin-top: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
                 보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다.<br>
                 귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
