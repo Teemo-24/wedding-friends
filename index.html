@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=18 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=18">
+    <!-- 💡 URL 뒤에 ?v=20 을 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=20">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -133,10 +133,70 @@
         .map-buttons { display: flex; justify-content: space-between; gap: 8px; margin-top: 15px; }
         .map-btn { flex: 1; padding: 12px 0; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: #444; font-size: 0.85em; box-shadow: 0 2px 4px rgba(0,0,0,0.02); font-weight: 500; }
         
-        .account-box { margin-top: 15px; text-align: left; background: #fafafa; padding: 20px; border-radius: 8px; border: 1px solid #eee; }
-        .account-box p { margin: 0 0 8px 0; }
-        .account-box .bank { font-size: 0.9em; color: #555; }
-        
+        /* 마음 전하실 곳 (아코디언) 스타일 */
+        .account-wrap { max-width: 360px; margin: 0 auto; }
+        .accordion-btn {
+            width: 100%;
+            background-color: #f7f4f0; 
+            color: #444;
+            border: none;
+            padding: 18px;
+            font-size: 1.05em;
+            font-family: 'Gowun Batang', serif;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            margin-bottom: 10px;
+            transition: background-color 0.2s;
+        }
+        .accordion-btn:hover { background-color: #efece7; }
+        .accordion-btn .arrow {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 1.2em;
+            color: #888;
+        }
+        .accordion-btn.active .arrow { transform: translateY(-50%) rotate(180deg); }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-top: -5px; 
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #f4f4f4;
+        }
+        .account-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #f4f4f4;
+            text-align: left;
+        }
+        .account-item:last-child { border-bottom: none; }
+        .acc-info { font-family: 'Pretendard', sans-serif; }
+        .acc-bank { font-weight: 600; font-size: 0.9em; color: #444; margin-right: 5px; }
+        .acc-num { font-size: 0.95em; color: #555; letter-spacing: 0.5px; }
+        .acc-name { font-size: 0.85em; color: #888; margin-top: 4px; }
+        .copy-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            color: #555;
+            cursor: pointer;
+            font-family: 'Pretendard', sans-serif;
+        }
+        .copy-btn:hover { background: #e0e0e0; }
+
         footer { padding: 40px; background: #fafafa; font-size: 0.8em; color: #999; }
 
         /* 🔍 라이트박스 */
@@ -156,14 +216,11 @@
         <div class="main-cover-container">
             <img src="./images/main.jpg" alt="메인 웨딩 사진" class="cover-img" onerror="this.src='https://via.placeholder.com/480x700?text=Main+Photo'">
             
-            <!-- 🎵 우측 상단 모서리 BGM 컨트롤 -->
             <div id="new-bgm-toggle" class="volume-control">
-                <!-- 재생 중 이퀄라이저 막대 -->
                 <div class="bar bar1"></div>
                 <div class="bar bar2"></div>
                 <div class="bar bar3"></div>
                 <div class="bar bar4"></div>
-                <!-- 정지 시 나타나는 스피커 아이콘 -->
                 <div class="speaker-icon">🔈</div>
             </div>
 
@@ -258,7 +315,7 @@
             </div>
         </section>
 
-        <!-- 3. 사진첩 (갤러리) -->
+        <!-- 3. 사진첩 -->
         <section>
             <h2>GALLERY</h2>
             <div class="gallery">
@@ -299,7 +356,6 @@
             
             <div class="gallery">
                 <div class="size-2x-wide"><img src="./images/photo23.jpg" onerror="this.src='https://via.placeholder.com/480x180?text=Photo+23+(Wide)'"></div>
-                <!-- 💡 [수정됨] 기존 2x2 사이즈 이미지(구 photo24, 25) 2개 삭제됨 -->
             </div>
             
             <div class="gallery row-of-4-standalone">
@@ -316,7 +372,6 @@
         <!-- 5. 오시는 길 -->
         <section>
             <h2>LOCATION</h2>
-            <!-- 💡 달력과 동일한 고운바탕(Gowun Batang) 폰트 적용 -->
             <div class="location-info" style="font-family: 'Gowun Batang', serif;">
                 <p style="font-weight: 600; font-size: 1.2em;">라포에트(구.광명역사컨벤션)</p>
                 <p style="font-size: 0.95em; color: #555; line-height: 1.6;">
@@ -335,14 +390,11 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=광명역+라포에트" target="_blank" class="map-btn">🔵 구글맵</a>
             </div>
 
-            <!-- 💡 상세 교통 및 주차 안내 영역 -->
             <div class="transport-info" style="margin-top: 40px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
                 
-                <!-- 자가용/주차 안내 -->
                 <div style="margin-bottom: 25px;">
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚗 자가용 이용 시</h3>
                     
-                    <!-- 💡 주차장 위치 이미지 추가 -->
                     <div style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid #eee;">
                         <img src="./images/parking.jpg" alt="주차장 안내" style="width: 100%; display: block;" onerror="this.src='https://via.placeholder.com/480x300?text=Parking+Map'">
                     </div>
@@ -358,14 +410,12 @@
                         (광명 파크자이 오피스텔 입력)
                     </p>
 
-                    <!-- 💡 2시간 무료 및 정산 안내 문구 하단 이동/추가 -->
                     <div style="background-color: #fafafa; padding: 12px 15px; border-radius: 6px; border: 1px solid #e9e9e9; font-size: 0.95em; line-height: 1.6;">
                         <span style="color: #d97070; font-weight: 600;">※ 2시간 무료 주차</span><br>
                         연회장·예약실 정산 후 출차
                     </div>
                 </div>
 
-                <!-- 지하철 안내 -->
                 <div style="margin-bottom: 25px;">
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚇 지하철 이용 시</h3>
                     <ul style="margin: 0; padding-left: 20px;">
@@ -374,7 +424,6 @@
                     </ul>
                 </div>
 
-                <!-- 버스 안내 -->
                 <div>
                     <h3 style="font-size: 1.1em; color: #92a878; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚌 버스 이용 시 (KTX 광명역 하차)</h3>
                     <ul style="margin: 0; padding-left: 20px; font-size: 0.9em;">
@@ -391,16 +440,71 @@
             </div>
         </section>
 
-        <!-- 6. 마음 전하실 곳 -->
-        <section>
-            <h2>마음 전하실 곳</h2>
-            <div class="account-box">
-                <p style="font-weight: 600;">신랑측</p>
-                <p class="bank">○○은행 123-456-789012 (박윤기)</p>
+        <!-- 마음 전하실 곳 (아코디언 형태) -->
+        <section style="border-bottom: none; padding-bottom: 80px;">
+            <svg class="flower-icon" style="width: 35px; margin-bottom: 10px;" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,110 Q45,80 50,55" stroke="#999" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <path d="M50,85 Q65,75 60,65 Q55,60 50,75" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M49,95 Q35,85 40,75 Q45,70 50,85" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="50" cy="45" r="4" stroke="#999" stroke-width="1.8" fill="none"/>
+                <path d="M50,41 C40,20 60,20 50,41" stroke="#999" stroke-width="1.5" fill="none"/>
+                <path d="M54,45 C75,35 70,55 54,49" stroke="#999" stroke-width="1.5" fill="none"/>
+                <path d="M52,49 C60,70 40,70 48,49" stroke="#999" stroke-width="1.5" fill="none"/>
+            </svg>
+            <h2 style="font-family: 'Gowun Batang', serif; font-size: 1.4em; color: #555; margin-bottom: 25px; letter-spacing: 0;">마음 전하실 곳</h2>
+
+            <!-- 💡 화환 사양 문구 (추가됨) -->
+            <div style="margin-bottom: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
+                식장 사정상 <b>축하 화환</b>은 정중히 사양합니다.<br>
+                보내주시는 따뜻한 마음만 감사히 받겠습니다.
             </div>
-            <div class="account-box">
-                <p style="font-weight: 600;">신부측</p>
-                <p class="bank">○○은행 987-654-321098 (신예은)</p>
+
+            <div class="account-wrap">
+                <!-- 신랑측 계좌 -->
+                <button class="accordion-btn">신랑측 계좌번호 <span class="arrow">⌄</span></button>
+                <div class="accordion-content">
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">국민</span> <span class="acc-num">60350104148904</span>
+                            <div class="acc-name">박윤기</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('60350104148904')">복사</button>
+                    </div>
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">iM</span> <span class="acc-num">08708114628</span>
+                            <div class="acc-name">박명호</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('08708114628')">복사</button>
+                    </div>
+                </div>
+
+                <!-- 신부측 계좌 -->
+                <button class="accordion-btn" style="margin-top: 10px;">신부측 계좌번호 <span class="arrow">⌄</span></button>
+                <div class="accordion-content">
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">카카오</span> <span class="acc-num">3333158606350</span>
+                            <div class="acc-name">신예은</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('3333158606350')">복사</button>
+                    </div>
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">농협</span> <span class="acc-num">3522261964743</span>
+                            <div class="acc-name">박선심</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('3522261964743')">복사</button>
+                    </div>
+                    <!-- 은행명, 예금주명 미상인 계좌 -->
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">은행명</span> <span class="acc-num">110484402863</span>
+                            <div class="acc-name">예금주</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -450,7 +554,7 @@
             setTimeout(typeName, 500);
         });
 
-        // 2. BGM 이퀄라이저 컨트롤 기능 (스피커 아이콘 토글)
+        // 2. BGM 이퀄라이저 컨트롤 기능
         const bgmAudio = document.getElementById('bgm-audio');
         const bgmToggleBtn = document.getElementById('new-bgm-toggle');
         let isPlaying = false; 
@@ -548,24 +652,46 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 6. 스크롤 애니메이션 옵저버 (배경색 & 꽃 피어나기)
+        // 6. 스크롤 애니메이션 옵저버
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
-        
-        // 날짜 섹션 배경색
         const dateObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { entry.isIntersecting ? entry.target.classList.add('active') : entry.target.classList.remove('active'); });
         }, observerOptions);
         dateObserver.observe(document.getElementById('large-date-section'));
 
-        // 🌸 꽃 피어나는 효과
         const flowerObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('bloom'); // 화면에 보이면 클래스 추가 (위로 올라오며 투명도 1)
+                    entry.target.classList.add('bloom'); 
                 }
             });
         }, { threshold: 0.2 }); 
         flowerObserver.observe(document.getElementById('flower-anim'));
+
+        // 7. 아코디언 토글 기능
+        const accBtns = document.querySelectorAll('.accordion-btn');
+        accBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // 8. 계좌번호 복사 기능
+        function copyToClipboard(val) {
+            const t = document.createElement("textarea");
+            document.body.appendChild(t);
+            t.value = val;
+            t.select();
+            document.execCommand('copy');
+            document.body.removeChild(t);
+            alert('계좌번호가 복사되었습니다.');
+        }
 
     </script>
 </body>
