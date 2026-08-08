@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=27 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=27">
+    <!-- 💡 URL 뒤에 ?v=28 을 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=28">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -24,6 +24,40 @@
         html, body { touch-action: pan-y; }
         img, svg { user-select: none; -webkit-user-drag: none; }
         
+        /* 💡 인트로 (초대장 열기) 화면 스타일 */
+        #intro-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #f7f4f0; /* 베이지톤 배경 */
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease-in-out;
+            cursor: pointer;
+        }
+        .intro-text-en { font-family: 'Bodoni Moda', serif; font-size: 1.1em; color: #92a878; letter-spacing: 3px; margin-bottom: 15px; }
+        .intro-text-ko { font-family: 'Gowun Batang', serif; font-size: 1.3em; color: #444; margin-bottom: 40px; font-weight: 600; }
+        .intro-btn {
+            background-color: #92a878;
+            color: #fff;
+            border: none;
+            padding: 14px 36px;
+            font-size: 1.05em;
+            font-family: 'Gowun Batang', serif;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(146, 168, 120, 0.3);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .container { max-width: 480px; margin: 0 auto; background: #fff; box-shadow: 0 0 15px rgba(0,0,0,0.05); overflow: hidden; position: relative; }
         
         /* 메인 커버 */
@@ -233,6 +267,14 @@
     </style>
 </head>
 <body>
+    
+    <!-- 💡 인트로 (초대장 열기) 화면 -->
+    <div id="intro-screen">
+        <div class="intro-text-en">WEDDING INVITATION</div>
+        <div class="intro-text-ko">박윤기 & 신예은</div>
+        <button class="intro-btn" id="intro-btn">초대장 열기</button>
+    </div>
+
     <div class="container">
         
         <!-- 1. 메인 커버 -->
@@ -416,7 +458,6 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=광명역+라포에트" target="_blank" class="map-btn">🔵 구글맵</a>
             </div>
 
-            <!-- 💡 [수정됨] map-buttons와 transport-info 사이 간격을 넓히기 위해 margin-top 값을 70px로 변경 -->
             <div class="transport-info" style="margin-top: 70px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
                 
                 <div style="margin-bottom: 45px;">
@@ -557,6 +598,29 @@
 
     <!-- 기능 제어 자바스크립트 -->
     <script>
+        // 💡 인트로 화면 클릭 시 초대장 열기 및 오디오 재생
+        const introScreen = document.getElementById('intro-screen');
+        const bgmAudio = document.getElementById('bgm-audio');
+        const bgmToggleBtn = document.getElementById('new-bgm-toggle');
+        let isPlaying = false; 
+
+        introScreen.addEventListener('click', function() {
+            // 화면 닫기 애니메이션
+            this.style.opacity = '0';
+            setTimeout(() => { this.style.display = 'none'; }, 800);
+            
+            // 💡 음악 재생 (사용자가 터치했기 때문에 정상 작동함)
+            if (!isPlaying) {
+                let playPromise = bgmAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        bgmToggleBtn.classList.add('playing');
+                    }).catch(error => { console.log("자동 재생 보류됨"); });
+                }
+            }
+        });
+
         // 1. 타이핑 애니메이션
         const nameText = "Yungi & Yeeun";
         const dateText = "We are getting married!";
@@ -618,21 +682,7 @@
             }
         }
 
-        // 2. BGM 이퀄라이저 컨트롤 기능
-        const bgmAudio = document.getElementById('bgm-audio');
-        const bgmToggleBtn = document.getElementById('new-bgm-toggle');
-        let isPlaying = false; 
-        
-        let playPromise = bgmAudio.play();
-        if (playPromise !== undefined) {
-            playPromise.then(_ => { 
-                isPlaying = true; 
-                bgmToggleBtn.classList.add('playing');
-            }).catch(error => {
-                isPlaying = false;
-                bgmToggleBtn.classList.remove('playing');
-            });
-        }
+        // 2. BGM 이퀄라이저 컨트롤 기능 (버튼 수동 조작용)
         bgmToggleBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             if (isPlaying) {
@@ -644,22 +694,6 @@
             }
             isPlaying = !isPlaying;
         });
-
-        const startBgmOnInteraction = () => {
-            if (!isPlaying) {
-                let playPromise = bgmAudio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        isPlaying = true;
-                        bgmToggleBtn.classList.add('playing');
-                    }).catch(error => { console.log("자동 재생 보류됨"); });
-                }
-            }
-            document.removeEventListener('touchstart', startBgmOnInteraction);
-            document.removeEventListener('click', startBgmOnInteraction);
-        };
-        document.addEventListener('touchstart', startBgmOnInteraction, {once: true});
-        document.addEventListener('click', startBgmOnInteraction, {once: true});
 
         // 3. 사진 확대
         const lightbox = document.getElementById('lightbox');
