@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=28 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=28">
+    <!-- 💡 URL 뒤에 ?v=29 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=29">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -598,6 +598,22 @@
 
     <!-- 기능 제어 자바스크립트 -->
     <script>
+        // 💡 9. 모바일 브라우저 확대 방지 스크립트 (iOS Safari, Chrome 등)
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) { // 다중 터치(핀치 줌) 차단
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            let now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) { // 빠르게 두 번 터치(더블 탭 줌) 차단
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
         // 💡 인트로 화면 클릭 시 초대장 열기 및 오디오 재생
         const introScreen = document.getElementById('intro-screen');
         const bgmAudio = document.getElementById('bgm-audio');
@@ -609,7 +625,7 @@
             this.style.opacity = '0';
             setTimeout(() => { this.style.display = 'none'; }, 800);
             
-            // 💡 음악 재생 (사용자가 터치했기 때문에 정상 작동함)
+            // 음악 재생 (사용자가 터치했기 때문에 정상 작동함)
             if (!isPlaying) {
                 let playPromise = bgmAudio.play();
                 if (playPromise !== undefined) {
@@ -654,23 +670,23 @@
             createPetals();
         });
 
-        // 🌸 흩날리는 꽃가루 생성 기능 (수량, 크기, 모양 조절)
+        // 🌸 흩날리는 꽃가루 생성 기능
         function createPetals() {
             const container = document.getElementById('petal-container');
             if (!container) return;
-            const petalCount = 15; // 수량 대폭 축소
+            const petalCount = 15; 
 
             for (let i = 0; i < petalCount; i++) {
                 const petal = document.createElement('div');
                 petal.classList.add('petal');
-                petal.innerHTML = '✿'; // 흰색 꽃 모양(문자)
+                petal.innerHTML = '✿'; 
                 
                 const left = Math.random() * 100; 
-                const size = Math.random() * 6 + 10; // 크기 축소 (10~16px)
-                const duration = Math.random() * 6 + 7; // 천천히 부드럽게 떨어짐 (7~13초)
+                const size = Math.random() * 6 + 10; 
+                const duration = Math.random() * 6 + 7; 
                 const delay = Math.random() * 5; 
                 const direction = Math.random() > 0.5 ? 1 : -1; 
-                const moveX = Math.random() * 60 * direction; // 좌우 흔들림
+                const moveX = Math.random() * 60 * direction; 
                 
                 petal.style.left = `${left}%`;
                 petal.style.fontSize = `${size}px`;
