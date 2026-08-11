@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- 기기의 강제 다크모드 변환을 막아 청첩장 본연의 예쁜 색감을 유지합니다.. -->
+    <!-- 기기의 강제 다크모드 변환을 막아 청첩장 본연의 예쁜 색감을 유지합니다. -->
     <meta name="color-scheme" content="light">
     
     <title>윤기 & 예은 결혼합니다</title>
@@ -15,6 +15,9 @@
     <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=34">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
+    <!-- 💡 [수정됨] 카카오 SDK 스크립트 (광고 차단 방지를 위해 integrity 속성 제거) -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
+    
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&display=swap');
@@ -23,9 +26,19 @@
         /* 하이엔드 명품 스타일의 Bodoni Moda */
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&display=swap');
         
-        body { font-family: 'Pretendard', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; text-align: center; }
+        /* 💡 모바일에서 텍스트 선택, 꾹 누르기 메뉴 등 원천 차단 */
+        body { 
+            font-family: 'Pretendard', sans-serif; margin: 0; padding: 0; 
+            background-color: #f7f7f7; color: #333; text-align: center; 
+            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; 
+            -webkit-touch-callout: none; 
+        }
+        
         html, body { touch-action: pan-y; }
-        img, svg { user-select: none; -webkit-user-drag: none; }
+        
+        /* 💡 이미지/SVG 드래그 및 우클릭 저장 차단 */
+        img, svg { user-select: none; -webkit-user-drag: none; pointer-events: none; }
+        .gallery img { pointer-events: auto; }
         
         /* 인트로 (초대장 열기) 화면 스타일 */
         #intro-screen {
@@ -169,7 +182,7 @@
         .calendar-table th { font-weight: 500; color: #333; font-size: 0.9em; }
         .calendar-table .sun { color: #f48b8b; } 
         
-        /* 💡 D-day 3일 동그라미 및 폭죽 애니메이션 */
+        /* D-day 3일 동그라미 및 폭죽 애니메이션 */
         .d-day-circle { 
             position: relative;
             width: 34px; height: 34px; line-height: 34px; 
@@ -177,7 +190,6 @@
             border-radius: 50%; margin: 0 auto; 
             font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.15); 
         }
-        /* 💡 3일 폭죽 효과 (css box-shadow 활용) */
         .firework-sparkles {
             position: absolute;
             top: 50%; left: 50%;
@@ -224,7 +236,7 @@
         /* 갤러리 */
         .gallery { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; gap: 10px; padding: 0 10px; grid-auto-flow: dense; }
         .gallery div { border-radius: 8px; overflow: hidden; background-color: #eee; }
-        .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; } 
+        .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; pointer-events: auto; } 
         .size-4x { grid-column: span 2; grid-row: span 2; }
         .size-2x-tall { grid-row: span 2; }
         .size-2x-wide { grid-column: span 2; }
@@ -235,7 +247,7 @@
         .map-image-wrapper { width: 100%; height: 220px; background: #e9e9e9; margin-top: 20px; border-radius: 8px; overflow: hidden; position: relative; box-shadow: 0 2px 6px rgba(0,0,0,0.05); cursor: pointer; }
         .map-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
         .map-buttons { display: flex; justify-content: space-between; gap: 8px; margin-top: 15px; }
-        .map-btn { flex: 1; padding: 12px 0; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: #444; font-size: 0.85em; box-shadow: 0 2px 4px rgba(0,0,0,0.02); font-weight: 500; }
+        .map-btn { flex: 1; padding: 12px 0; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; text-decoration: none; color: #444; font-size: 0.85em; box-shadow: 0 2px 4px rgba(0,0,0,0.02); font-weight: 500; pointer-events: auto; }
         
         /* 마음 전하실 곳 (아코디언) 스타일 */
         .account-wrap { max-width: 360px; margin: 0 auto; }
@@ -253,6 +265,7 @@
             text-align: center;
             margin-bottom: 10px;
             transition: background-color 0.2s;
+            pointer-events: auto;
         }
         .accordion-btn:hover { background-color: #efece7; }
         .accordion-btn .arrow {
@@ -298,10 +311,11 @@
             color: #555;
             cursor: pointer;
             font-family: 'Pretendard', sans-serif;
+            pointer-events: auto;
         }
         .copy-btn:hover { background: #e0e0e0; }
 
-        /* 💡 전화/문자 아이콘 스타일 */
+        /* 전화/문자 아이콘 스타일 */
         .contact-btn {
             display: inline-flex;
             align-items: center;
@@ -311,17 +325,41 @@
             background: #f0f4eb;
             border-radius: 50%;
             transition: background 0.2s;
+            pointer-events: auto;
         }
         .contact-btn:hover { background: #e2ead9; }
+
+        /* 카카오톡 공유 버튼 스타일 */
+        .kakao-share-btn {
+            background-color: #FEE500;
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 0;
+            width: 100%;
+            max-width: 360px;
+            font-family: 'Pretendard', sans-serif;
+            font-size: 1.05em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
+            pointer-events: auto;
+        }
+        .kakao-share-btn:hover { background-color: #e5cd00; }
 
         footer { padding: 40px; background: #fafafa; font-size: 0.8em; color: #999; }
 
         /* 라이트박스 */
-        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; }
-        .lightbox img { max-width: 95%; max-height: 80vh; border-radius: 8px; object-fit: contain; animation: fadeIn 0.3s; }
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 2000; align-items: center; justify-content: center; pointer-events: auto; }
+        .lightbox img { max-width: 95%; max-height: 80vh; border-radius: 8px; object-fit: contain; animation: fadeIn 0.3s; pointer-events: auto; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .lightbox .close-btn { position: absolute; top: 20px; right: 25px; color: #fff; font-size: 40px; cursor: pointer; font-weight: 300; }
-        .lightbox .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 30px; cursor: pointer; padding: 15px; user-select: none; }
+        .lightbox .close-btn { position: absolute; top: 20px; right: 25px; color: #fff; font-size: 40px; cursor: pointer; font-weight: 300; pointer-events: auto; }
+        .lightbox .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 30px; cursor: pointer; padding: 15px; user-select: none; pointer-events: auto; }
         .lightbox .prev-btn { left: 5px; }
         .lightbox .next-btn { right: 5px; }
     </style>
@@ -416,7 +454,6 @@
                     <tbody>
                         <tr>
                             <td></td><td></td><td></td><td></td><td>1</td><td>2</td>
-                            <!-- 💡 [수정됨] 3일 동그라미 안에 폭죽(파티클) 애니메이션 추가 -->
                             <td>
                                 <div class="d-day-circle">
                                     3
@@ -511,7 +548,7 @@
                 <div style="font-size: 0.95em; color: #555; line-height: 1.6; display: flex; flex-direction: column; align-items: center; gap: 6px;">
                     <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
                         🤍 경기도 광명시 광명역로 21 동편 지하 1층
-                        <button onclick="copyToClipboard('경기도 광명시 광명역로 21', '주소가 복사되었습니다.')" style="background: transparent; border: 1px solid #d0d0d0; border-radius: 4px; padding: 3px 6px; cursor: pointer; color: #777; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02);" title="주소 복사">
+                        <button onclick="copyToClipboard('경기도 광명시 광명역로 21', '주소가 복사되었습니다.')" style="background: transparent; border: 1px solid #d0d0d0; border-radius: 4px; padding: 3px 6px; cursor: pointer; color: #777; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); pointer-events: auto;" title="주소 복사">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -523,14 +560,14 @@
             </div>
             
             <div class="map-image-wrapper">
-                <a href="https://map.naver.com/v5/search/광명역 라포에트" target="_blank">
+                <a href="https://map.naver.com/v5/search/광명역 라포에트" target="_blank" style="pointer-events: auto;">
                     <img src="./images/map.jpg" alt="네이버 지도 약도" onerror="this.src='https://via.placeholder.com/480x220?text=클릭 시 네이버 지도로 이동합니다'">
                 </a>
             </div>
             <div class="map-buttons">
-                <a href="https://map.kakao.com/link/search/광명역 라포에트" target="_blank" class="map-btn">🟡 카카오맵</a>
-                <a href="tmap://search?name=광명역 라포에트" class="map-btn">🟢 티맵</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=광명역+라포에트" target="_blank" class="map-btn">🔵 구글맵</a>
+                <a href="https://map.kakao.com/link/search/광명역 라포에트" target="_blank" class="map-btn" style="pointer-events: auto;">🟡 카카오맵</a>
+                <a href="tmap://search?name=광명역 라포에트" class="map-btn" style="pointer-events: auto;">🟢 티맵</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=광명역+라포에트" target="_blank" class="map-btn" style="pointer-events: auto;">🔵 구글맵</a>
             </div>
 
             <div class="transport-info" style="margin-top: 70px; text-align: left; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #444; line-height: 1.8;">
@@ -545,7 +582,7 @@
                     <p style="margin: 0 0 15px 0;">
                         <b>[제1주차장] 센트럴자이 상가 주차장</b><br>
                         내비게이션: <span style="display: inline-flex; align-items: center; gap: 6px;">경기도 광명시 광명역로 28
-                            <button onclick="copyToClipboard('경기도 광명시 광명역로 28', '주소가 복사되었습니다.')" style="background: transparent; border: 1px solid #d0d0d0; border-radius: 4px; padding: 3px 5px; cursor: pointer; color: #777; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02);" title="주소 복사">
+                            <button onclick="copyToClipboard('경기도 광명시 광명역로 28', '주소가 복사되었습니다.')" style="background: transparent; border: 1px solid #d0d0d0; border-radius: 4px; padding: 3px 5px; cursor: pointer; color: #777; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); pointer-events: auto;" title="주소 복사">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -557,7 +594,7 @@
                     <p style="margin: 0 0 15px 0;">
                         <b>[제2주차장] 파크자이 상가 주차장</b><br>
                         내비게이션: <span style="display: inline-flex; align-items: center; gap: 6px;">경기도 광명시 광명역로 26
-                            <button onclick="copyToClipboard('경기도 광명시 광명역로 26', '주소가 복사되었습니다.')" style="background: transparent; border: 1px solid #d0d0d0; border-radius: 4px; padding: 3px 5px; cursor: pointer; color: #777; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02);" title="주소 복사">
+                            <button onclick="copyToClipboard('경기도 광명시 광명역로 26', '주소가 복사되었습니다.')" style="background: transparent; border: 1px solid #d0d0d0; border-radius: 4px; padding: 3px 5px; cursor: pointer; color: #777; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); pointer-events: auto;" title="주소 복사">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -623,8 +660,6 @@
                     <div class="account-item">
                         <div class="acc-info">
                             <span class="acc-bank">국민</span> <span class="acc-num">60350104148904</span>
-                            
-                            <!-- 💡 [수정됨] 신랑 전화번호 반영 -->
                             <div class="acc-name" style="display: flex; align-items: center; margin-top: 4px;">
                                 <span style="margin-right: 8px;">박윤기</span>
                                 <a href="tel:01099429941" class="contact-btn" title="전화하기" style="margin-right: 4px;">
@@ -634,7 +669,6 @@
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#92a878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                                 </a>
                             </div>
-
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('60350104148904', '계좌번호가 복사되었습니다.')">복사</button>
                     </div>
@@ -646,8 +680,6 @@
                     <div class="account-item">
                         <div class="acc-info">
                             <span class="acc-bank">카카오</span> <span class="acc-num">3333158606350</span>
-                            
-                            <!-- 💡 [수정됨] 신부 전화번호 반영 -->
                             <div class="acc-name" style="display: flex; align-items: center; margin-top: 4px;">
                                 <span style="margin-right: 8px;">신예은</span>
                                 <a href="tel:01020414216" class="contact-btn" title="전화하기" style="margin-right: 4px;">
@@ -657,7 +689,6 @@
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#92a878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                                 </a>
                             </div>
-
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('3333158606350', '계좌번호가 복사되었습니다.')">복사</button>
                     </div>
@@ -666,9 +697,18 @@
 
             <!-- 화환 사양 문구 -->
             <div style="margin-top: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
-                보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다. 귀한 걸음으로 축복해 주시면 더없이 감사하겠습니다.
+                보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다. 귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
             </div>
+        </section>
 
+        <!-- 카카오톡 공유하기 버튼 영역 -->
+        <section style="border-top: 1px solid #f0f0f0; border-bottom: none; padding-top: 40px; padding-bottom: 60px;">
+            <button class="kakao-share-btn" onclick="shareMessage()">
+                <svg viewBox="0 0 100 100" style="width: 22px; height: 22px; margin-right: 8px; fill: #000;">
+                    <path d="M50,15 C25.147,15 5,31.238 5,51.26 C5,64.218 14.12,75.584 27.534,81.826 L23.504,96.538 C23.238,97.512 24.364,98.243 25.187,97.625 L42.61,84.536 C45.006,84.887 47.472,85.074 50,85.074 C74.853,85.074 95,68.835 95,48.814 C95,28.793 74.853,15 50,15 Z"></path>
+                </svg>
+                카카오톡으로 청첩장 보내기
+            </button>
         </section>
         
         <footer>
@@ -687,6 +727,9 @@
 
     <!-- 기능 제어 자바스크립트 -->
     <script>
+        // 💡 모바일 텍스트 꾹 누르기(선택) 방지
+        document.body.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
         // 모바일 브라우저 확대 방지 스크립트
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) { 
@@ -752,7 +795,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             nameEl.classList.add('typing-cursor');
             setTimeout(typeName, 500);
-            
             createPetals();
         });
 
@@ -820,15 +862,6 @@
         function closeLightbox() { lightbox.style.display = 'none'; }
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-        // 불펌 방지
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'PrintScreen' || e.keyCode === 44) { alert("사진 캡처가 제한되어 있습니다."); e.preventDefault(); }
-            if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) { e.preventDefault(); }
-            if (e.metaKey && e.shiftKey) { e.preventDefault(); }
-        });
-
         // 카운트다운 타이머
         const weddingDate = new Date("2026-10-03T16:10:00").getTime();
         function updateCountdown() {
@@ -882,7 +915,7 @@
             });
         });
 
-        // 💡 계좌번호 및 주소 복사 기능 (개선됨)
+        // 계좌번호 및 주소 복사 기능
         function copyToClipboard(val, msg) {
             const t = document.createElement("textarea");
             document.body.appendChild(t);
@@ -893,6 +926,47 @@
             alert(msg);
         }
 
+        // 💡 [수정됨] 올바른 카카오 자바스크립트 키 초기화 및 공유 기능
+        try {
+            if (window.Kakao && !Kakao.isInitialized()) {
+                Kakao.init('75ecc2283c096d875ba06ce0d12e1f5e'); 
+            }
+        } catch(e) {
+            console.error("카카오 초기화 에러:", e);
+        }
+
+        // 친구용 주소(yungi-yeeun)
+        function shareMessage() {
+            if (!window.Kakao) {
+                alert('카카오 시스템을 불러오지 못했습니다. 광고 차단 브라우저(앱)를 끄고 기본 브라우저로 접속해주세요.');
+                return;
+            }
+            if (!Kakao.isInitialized()) {
+                alert('카카오 공유 기능 설정을 확인해주세요.');
+                return;
+            }
+            Kakao.Share.sendDefault({
+                objectType: 'feed',
+                content: {
+                    title: '윤기 & 예은 결혼합니다 💍',
+                    description: '저희 두 사람의 새로운 시작에 초대합니다.\n2026년 10월 3일 토요일 오후 4시 10분',
+                    imageUrl: 'https://yungi-yeeun.vercel.app/images/main.jpg',
+                    link: {
+                        mobileWebUrl: 'https://yungi-yeeun.vercel.app',
+                        webUrl: 'https://yungi-yeeun.vercel.app',
+                    },
+                },
+                buttons: [
+                    {
+                        title: '모바일 청첩장 보기',
+                        link: {
+                            mobileWebUrl: 'https://yungi-yeeun.vercel.app',
+                            webUrl: 'https://yungi-yeeun.vercel.app',
+                        },
+                    },
+                ],
+            });
+        }
     </script>
 </body>
 </html>
