@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 💡 [추가됨] 기기의 강제 다크모드 변환을 막아 청첩장 본연의 예쁜 색감을 유지합니다. -->
+    <meta name="color-scheme" content="light">
+    
     <title>윤기 & 예은 결혼합니다</title>
     
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=30 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=30">
+    <!-- 💡 URL 뒤에 ?v=31 을 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=31">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -165,7 +168,8 @@
         .calendar-table th, .calendar-table td { padding: 16px 0; text-align: center; width: 14.28%; }
         .calendar-table th { font-weight: 500; color: #333; font-size: 0.9em; }
         .calendar-table .sun { color: #f48b8b; } 
-        .d-day-circle { width: 34px; height: 34px; line-height: 34px; background-color: #92a878; color: #fff; border-radius: 50%; margin: 0 auto; font-weight: 500; }
+        /* 💡 [수정됨] 3일 달력 동그라미 색상을 다크모드/라이트모드 모두 잘 보이는 코랄레드로 변경하고 가독성을 위해 그림자 추가 */
+        .d-day-circle { width: 34px; height: 34px; line-height: 34px; background-color: #d97070; color: #fff; border-radius: 50%; margin: 0 auto; font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
         
         .countdown-box { display: flex; justify-content: center; gap: 10px; margin: 30px auto; max-width: 340px; }
         .count-item { flex: 1; background: #fff; padding: 15px 0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -527,7 +531,6 @@
                 모두 소중히 간직하겠습니다.
             </div>
 
-            <!-- 💡 [수정됨] 부모님 계좌 삭제, 신랑/신부 본인 계좌만 남김 -->
             <div class="account-wrap">
                 <!-- 신랑측 계좌 -->
                 <button class="accordion-btn">신랑측 계좌번호 <span class="arrow">⌄</span></button>
@@ -554,7 +557,7 @@
                 </div>
             </div>
 
-            <!-- 💡 [수정됨] 화환 사양 문구 줄바꿈 제거 -->
+            <!-- 화환 사양 문구 -->
             <div style="margin-top: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
                 보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다. 귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
             </div>
