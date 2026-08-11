@@ -11,12 +11,9 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=35 를 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=35">
+    <!-- 💡 URL 뒤에 ?v=34 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=34">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
-
-    <!-- 💡 [신규 추가] 카카오톡 SDK (공유 기능을 위한 필수 파일) -->
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCmbV6AUn877+j-vbI80FSBavH1O7s0wYmng24r1jE0k2K5k1T1Q+X0D0B+hY2Q" crossorigin="anonymous"></script>
     
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -35,7 +32,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background-color: #f7f4f0; 
+            background-color: #f7f4f0; /* 베이지톤 배경 */
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -172,7 +169,7 @@
         .calendar-table th { font-weight: 500; color: #333; font-size: 0.9em; }
         .calendar-table .sun { color: #f48b8b; } 
         
-        /* D-day 3일 동그라미 및 폭죽 애니메이션 */
+        /* 💡 D-day 3일 동그라미 및 폭죽 애니메이션 */
         .d-day-circle { 
             position: relative;
             width: 34px; height: 34px; line-height: 34px; 
@@ -180,6 +177,7 @@
             border-radius: 50%; margin: 0 auto; 
             font-weight: 600; box-shadow: 0 2px 4px rgba(0,0,0,0.15); 
         }
+        /* 💡 3일 폭죽 효과 (css box-shadow 활용) */
         .firework-sparkles {
             position: absolute;
             top: 50%; left: 50%;
@@ -303,7 +301,7 @@
         }
         .copy-btn:hover { background: #e0e0e0; }
 
-        /* 전화/문자 아이콘 스타일 */
+        /* 💡 전화/문자 아이콘 스타일 */
         .contact-btn {
             display: inline-flex;
             align-items: center;
@@ -315,28 +313,6 @@
             transition: background 0.2s;
         }
         .contact-btn:hover { background: #e2ead9; }
-
-        /* 💡 [신규 추가] 카카오톡 공유 버튼 스타일 */
-        .kakao-share-btn {
-            background-color: #FEE500;
-            color: #000000;
-            border: none;
-            border-radius: 8px;
-            padding: 14px 0;
-            width: 100%;
-            max-width: 360px;
-            font-family: 'Pretendard', sans-serif;
-            font-size: 1.05em;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            transition: background-color 0.2s;
-        }
-        .kakao-share-btn:hover { background-color: #e5cd00; }
 
         footer { padding: 40px; background: #fafafa; font-size: 0.8em; color: #999; }
 
@@ -440,6 +416,7 @@
                     <tbody>
                         <tr>
                             <td></td><td></td><td></td><td></td><td>1</td><td>2</td>
+                            <!-- 💡 [수정됨] 3일 동그라미 안에 폭죽(파티클) 애니메이션 추가 -->
                             <td>
                                 <div class="d-day-circle">
                                     3
@@ -621,7 +598,7 @@
         </section>
 
         <!-- 마음 전하실 곳 -->
-        <section style="border-bottom: none; padding-bottom: 60px;">
+        <section style="border-bottom: none; padding-bottom: 80px;">
             <svg class="flower-icon" style="width: 35px; margin-bottom: 10px;" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
                 <path d="M50,110 Q45,80 50,55" stroke="#92a878" stroke-width="1.8" fill="none" stroke-linecap="round"/>
                 <path d="M50,85 Q65,75 60,65 Q55,60 50,75" stroke="#92a878" stroke-width="1.5" fill="none" stroke-linecap="round"/>
@@ -646,6 +623,8 @@
                     <div class="account-item">
                         <div class="acc-info">
                             <span class="acc-bank">국민</span> <span class="acc-num">60350104148904</span>
+                            
+                            <!-- 💡 [수정됨] 신랑 전화번호 반영 -->
                             <div class="acc-name" style="display: flex; align-items: center; margin-top: 4px;">
                                 <span style="margin-right: 8px;">박윤기</span>
                                 <a href="tel:01099429941" class="contact-btn" title="전화하기" style="margin-right: 4px;">
@@ -655,6 +634,7 @@
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#92a878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                                 </a>
                             </div>
+
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('60350104148904', '계좌번호가 복사되었습니다.')">복사</button>
                     </div>
@@ -666,6 +646,8 @@
                     <div class="account-item">
                         <div class="acc-info">
                             <span class="acc-bank">카카오</span> <span class="acc-num">3333158606350</span>
+                            
+                            <!-- 💡 [수정됨] 신부 전화번호 반영 -->
                             <div class="acc-name" style="display: flex; align-items: center; margin-top: 4px;">
                                 <span style="margin-right: 8px;">신예은</span>
                                 <a href="tel:01020414216" class="contact-btn" title="전화하기" style="margin-right: 4px;">
@@ -675,25 +657,18 @@
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#92a878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                                 </a>
                             </div>
+
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('3333158606350', '계좌번호가 복사되었습니다.')">복사</button>
                     </div>
                 </div>
             </div>
 
+            <!-- 화환 사양 문구 -->
             <div style="margin-top: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
                 보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다. 귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
             </div>
-        </section>
 
-        <!-- 💡 [신규 추가] 카카오톡 공유하기 버튼 영역 -->
-        <section style="border-top: 1px solid #f0f0f0; border-bottom: none; padding-top: 40px; padding-bottom: 60px;">
-            <button class="kakao-share-btn" onclick="shareMessage()">
-                <svg viewBox="0 0 100 100" style="width: 22px; height: 22px; margin-right: 8px; fill: #000;">
-                    <path d="M50,15 C25.147,15 5,31.238 5,51.26 C5,64.218 14.12,75.584 27.534,81.826 L23.504,96.538 C23.238,97.512 24.364,98.243 25.187,97.625 L42.61,84.536 C45.006,84.887 47.472,85.074 50,85.074 C74.853,85.074 95,68.835 95,48.814 C95,28.793 74.853,15 50,15 Z"></path>
-                </svg>
-                카카오톡으로 청첩장 보내기
-            </button>
         </section>
         
         <footer>
@@ -712,34 +687,6 @@
 
     <!-- 기능 제어 자바스크립트 -->
     <script>
-        // 💡 [필수 설정] 카카오 자바스크립트 키 초기화
-        Kakao.init('2bd5fe57f4f8829870bc8ae52de476f5'); 
-
-        // 💡 [신규 추가] 카카오톡 공유 기능 로직
-        function shareMessage() {
-            Kakao.Share.sendDefault({
-                objectType: 'feed',
-                content: {
-                    title: '윤기 & 예은 결혼합니다 💍',
-                    description: '저희 두 사람의 새로운 시작에 초대합니다.\n2026년 10월 3일 토요일 오후 4시 10분',
-                    imageUrl: 'https://yungi-yeeun.vercel.app/images/main.jpg', // 카톡 미리보기에 뜰 메인 사진 주소
-                    link: {
-                        mobileWebUrl: 'https://yungi-yeeun.vercel.app',
-                        webUrl: 'https://yungi-yeeun.vercel.app',
-                    },
-                },
-                buttons: [
-                    {
-                        title: '모바일 청첩장 보기',
-                        link: {
-                            mobileWebUrl: 'https://yungi-yeeun.vercel.app',
-                            webUrl: 'https://yungi-yeeun.vercel.app',
-                        },
-                    },
-                ],
-            });
-        }
-
         // 모바일 브라우저 확대 방지 스크립트
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) { 
@@ -935,7 +882,7 @@
             });
         });
 
-        // 계좌번호 및 주소 복사 기능
+        // 💡 계좌번호 및 주소 복사 기능 (개선됨)
         function copyToClipboard(val, msg) {
             const t = document.createElement("textarea");
             document.body.appendChild(t);
