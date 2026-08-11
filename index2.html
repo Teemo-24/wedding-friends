@@ -8,8 +8,8 @@
     <!-- 📌 카카오톡 등 SNS 공유용 썸네일 및 정보 (Open Graph) -->
     <meta property="og:title" content="윤기 & 예은 결혼합니다 💍">
     <meta property="og:description" content="저희 두 사람의 새로운 시작에 초대합니다.">
-    <!-- 💡 URL 뒤에 ?v=30 을 붙여 캐시 초기화 -->
-    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=30">
+    <!-- 💡 URL 뒤에 ?v=29 를 붙여 캐시 초기화 -->
+    <meta property="og:image" content="https://yungi-yeeun.vercel.app/images/main.jpg?v=29">
     <meta property="og:url" content="https://yungi-yeeun.vercel.app">
     
     <style>
@@ -527,7 +527,6 @@
                 모두 소중히 간직하겠습니다.
             </div>
 
-            <!-- 💡 [수정됨] 부모님 계좌 삭제, 신랑/신부 본인 계좌만 남김 -->
             <div class="account-wrap">
                 <!-- 신랑측 계좌 -->
                 <button class="accordion-btn">신랑측 계좌번호 <span class="arrow">⌄</span></button>
@@ -538,6 +537,13 @@
                             <div class="acc-name">박윤기</div>
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('60350104148904')">복사</button>
+                    </div>
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">iM</span> <span class="acc-num">08708114628</span>
+                            <div class="acc-name">박명호</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('08708114628')">복사</button>
                     </div>
                 </div>
 
@@ -551,12 +557,27 @@
                         </div>
                         <button class="copy-btn" onclick="copyToClipboard('3333158606350')">복사</button>
                     </div>
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">신한</span> <span class="acc-num">110484402863</span>
+                            <div class="acc-name">신동현</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('110484402863')">복사</button>
+                    </div>
+                    <div class="account-item">
+                        <div class="acc-info">
+                            <span class="acc-bank">농협</span> <span class="acc-num">3522261964743</span>
+                            <div class="acc-name">박선심</div>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('3522261964743')">복사</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- 💡 [수정됨] 화환 사양 문구 줄바꿈 제거 -->
+            <!-- 화환 사양 문구 -->
             <div style="margin-top: 30px; padding: 15px 10px; background-color: #fafafa; border-radius: 8px; border: 1px solid #eaeaea; font-family: 'Gowun Batang', serif; font-size: 0.95em; color: #666; line-height: 1.6;">
-                보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다. 귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
+                보내주시는 <b>화환</b>은 감사한 마음으로 정중히 사양하고자 합니다.<br>
+                귀한 걸음으로 함께 축복해 주시면 더없이 감사하겠습니다.
             </div>
 
         </section>
@@ -577,7 +598,7 @@
 
     <!-- 기능 제어 자바스크립트 -->
     <script>
-        // 9. 모바일 브라우저 확대 방지 스크립트 (iOS Safari, Chrome 등)
+        // 💡 9. 모바일 브라우저 확대 방지 스크립트 (iOS Safari, Chrome 등)
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) { // 다중 터치(핀치 줌) 차단
                 event.preventDefault();
@@ -593,7 +614,7 @@
             lastTouchEnd = now;
         }, { passive: false });
 
-        // 인트로 화면 클릭 시 초대장 열기 및 오디오 재생
+        // 💡 인트로 화면 클릭 시 초대장 열기 및 오디오 재생
         const introScreen = document.getElementById('intro-screen');
         const bgmAudio = document.getElementById('bgm-audio');
         const bgmToggleBtn = document.getElementById('new-bgm-toggle');
@@ -649,7 +670,7 @@
             createPetals();
         });
 
-        // 🌸 흩날리는 꽃가루 생성 기능 (수량, 크기, 모양 조절)
+        // 🌸 흩날리는 꽃가루 생성 기능
         function createPetals() {
             const container = document.getElementById('petal-container');
             if (!container) return;
