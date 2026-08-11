@@ -730,6 +730,35 @@
         // 💡 모바일 텍스트 꾹 누르기(선택) 방지
         document.body.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
+        // 🛡️ PC 환경 개발자 도구 및 소스 보기, 캡처 차단
+        document.addEventListener('keydown', function(e) {
+            // F12 차단 (개발자 도구)
+            if (e.keyCode === 123 || e.key === 'F12') {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+            // Ctrl + Shift + I / J / C 차단 (개발자 도구 단축키)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+            // Ctrl + U 차단 (페이지 소스 보기)
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+            // PrintScreen 차단 (PC 화면 캡처)
+            if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                alert("보안을 위해 화면 캡처가 제한되어 있습니다.");
+                e.preventDefault();
+            }
+            // Ctrl + P 차단 (인쇄 및 PDF 저장)
+            if (e.ctrlKey && (e.key === 'P' || e.key === 'p')) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+        });
+
         // 모바일 브라우저 확대 방지 스크립트
         document.addEventListener('touchstart', function(event) {
             if (event.touches.length > 1) { 
